@@ -1,0 +1,75 @@
+<div class="box">
+  <div class="box-header">
+    <div class="box-title">Current position detail</div>
+  </div>
+  <div class="box-body">
+    <div>
+      <div>
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Symbol:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{ currentPosition()?.symbol }}</span
+          >
+        </div>
+
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Entry date:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{
+              currentPosition()?.entryDatetime
+                | date : "MMM dd, yyyy 'at' HH:mm"
+            }}</span
+          >
+        </div>
+
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Position amount:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{
+              currentPosition()?.positionBaseAmount | number : "1.0-10"
+            }}</span
+          ><span
+            class="text-dark font-semibold ltr:float-right rtl:float-left"
+            >{{ currentPosition()?.symbol | currencyBySymbol : "base" }}</span
+          >
+        </div>
+
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Entry price:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{ currentPosition()?.entryPrice | number : "1.0-10" }}</span
+          ><span
+            class="text-dark font-semibold ltr:float-right rtl:float-left"
+            >{{ currentPosition()?.symbol | currencyBySymbol : "quote" }}</span
+          >
+        </div>
+
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Entry cost:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{ currentPosition()?.entryQuoteAmount | number : "1.0-10" }}</span
+          ><span
+            class="text-dark font-semibold ltr:float-right rtl:float-left"
+            >{{ currentPosition()?.symbol | currencyBySymbol : "quote" }}</span
+          >
+        </div>
+
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Exit price:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{ currentPosition()?.exitPrice | number : "1.0-10" }}</span
+          ><span
+            class="text-dark font-semibold ltr:float-right rtl:float-left"
+            >{{ currentPosition()?.symbol | currencyBySymbol : "quote" }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

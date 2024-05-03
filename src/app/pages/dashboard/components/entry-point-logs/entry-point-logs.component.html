@@ -1,0 +1,56 @@
+<div class="box">
+  <div class="box-header md:justify-between flex-wrap">
+    <div class="box-title">Analyzing entry point</div>
+  </div>
+  <div class="box-body !p-0">
+    <ul class="border-0">
+      @for (entryPoint of entryPointLogs(); track $index) {
+      <li
+        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
+      >
+        <a href="javascript:void(0);" class="flex-column items-start">
+          <div class="flex w-full justify-between items-center">
+            <p class="tx-14 mb-0 font-normal text-dark">
+              {{ entryPoint.symbol }}
+            </p>
+
+            <p class="tx-14 mb-0 font-normal text-dark">
+              @if (entryPoint.areAllCandlesPositive) {
+              <span class="badge bg-success/10 text-success"
+                >Ready to trade</span
+              >
+              } @else {
+              <span class="badge bg-danger/10 text-danger"
+                >Not ready to trade</span
+              >
+              }
+            </p>
+
+            <p class="text-success mb-0 font-normal tx-13">
+              @if (entryPoint.intervalPercentagePriceVariation >= 0) {
+
+              <span class="text-success"
+                >+{{
+                  entryPoint.intervalPercentagePriceVariation
+                    | number : "1.0-2"
+                }}% <i class="ti ti-arrow-big-up-lines ms-1"></i
+              ></span>
+
+              } @else {
+
+              <span class="text-danger"
+                >{{
+                  entryPoint.intervalPercentagePriceVariation
+                    | number : "1.0-2"
+                }}% <i class="ti ti-arrow-big-down-lines ms-1"></i
+              ></span>
+
+              }
+            </p>
+          </div>
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+</div>
