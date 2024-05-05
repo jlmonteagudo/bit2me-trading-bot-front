@@ -1,18 +1,27 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Menu, NavService } from '../../services/nav.service';
+import { HeaderComponent } from '../../components/header/header.component';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { TabToTopComponent } from '../../components/tab-to-top/tab-to-top.component';
 @Component({
-    selector: 'app-content-layout',
-    templateUrl: './content-layout.component.html',
-    styleUrl: './content-layout.component.scss',
+  selector: 'app-content-layout',
+  standalone: true,
+  imports: [
+    RouterModule,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
+    TabToTopComponent,
+  ],
+  templateUrl: './content-layout.component.html',
+  styleUrl: './content-layout.component.scss',
 })
 export class ContentLayoutComponent {
   public menuItems!: Menu[];
 
-  constructor(
-    public navServices: NavService,
-    private elementRef: ElementRef,
-    private renderer: Renderer2
-  ) {
+  constructor(public navServices: NavService, private elementRef: ElementRef) {
     this.navServices.items.subscribe((menuItems: any) => {
       this.menuItems = menuItems;
     });
@@ -23,10 +32,14 @@ export class ContentLayoutComponent {
     document.querySelector('#responsive-overlay')?.classList.remove('active');
   }
   togglesidemenuBody() {
-    if(localStorage.getItem('ynex-sidemenu-styles') == 'icontext'){
+    if (localStorage.getItem('ynex-sidemenu-styles') == 'icontext') {
       document.documentElement.removeAttribute('icon-text');
     }
-    if (document.documentElement.getAttribute('data-nav-layout') == 'horizontal' && window.innerWidth > 992) {
+    if (
+      document.documentElement.getAttribute('data-nav-layout') ==
+        'horizontal' &&
+      window.innerWidth > 992
+    ) {
       this.closeMenu();
     }
     let html = this.elementRef.nativeElement.ownerDocument.documentElement;
