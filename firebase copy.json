@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "bit2me-trading-bot",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

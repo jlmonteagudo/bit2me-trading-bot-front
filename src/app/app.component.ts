@@ -16,10 +16,10 @@ import { fromEvent } from 'rxjs';
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  animations:[]
+  animations: [],
 })
 export class AppComponent {
-  title = 'ynex';
+  title = 'bit2me-trading-bot';
   public isSpinner = true;
 
   ngOnInit() {

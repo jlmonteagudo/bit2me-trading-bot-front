@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "nx serve",
     "build": "nx build",
+    "deploy": "nx run bit2me-trading-bot:deploy:production",
     "watch": "nx build --watch --configuration development",
     "test": "nx test",
     "postcss": "sass ./src/assets/scss/style.scss ./src/assets/css/style.css && postcss ./src/assets/css/style.css -o ./src/assets/css/style.css",

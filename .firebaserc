@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bit2me-trading": {
+      "hosting": {
+        "bit2me-trading-bot": [
+          "bit2me-trading"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bit2me-trading"
+  }
+}
