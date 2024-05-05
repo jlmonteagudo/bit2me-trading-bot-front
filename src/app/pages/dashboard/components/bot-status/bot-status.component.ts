@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BotStatus } from '../../../../shared/enums/bot-status.enum';
 
@@ -11,9 +11,18 @@ import { BotStatus } from '../../../../shared/enums/bot-status.enum';
 })
 export class BotStatusComponent {
   botStatus = input.required<BotStatus>();
-  botStatusChanged = output<BotStatus>();
+  manualMode = input.required<boolean>();
 
-  get BotStatus() {
-    return BotStatus;
+  botStatusChanged = output<BotStatus>();
+  manualModeChanged = output<boolean>();
+
+  toggleBotStatus() {
+    const newBotStatus =
+      this.botStatus() === BotStatus.On ? BotStatus.Off : BotStatus.On;
+    this.botStatusChanged.emit(newBotStatus);
+  }
+
+  toggleManualMode() {
+    this.manualModeChanged.emit(!this.manualMode());
   }
 }

@@ -2,7 +2,9 @@
   <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
     <app-bot-status
       [botStatus]="botStatus()!"
+      [manualMode]="!!manualMode()"
       (botStatusChanged)="onBotStatusChanged($event)"
+      (manualModeChanged)="onManualModeChanged($event)"
     />
 
     @if (currentPosition()) {

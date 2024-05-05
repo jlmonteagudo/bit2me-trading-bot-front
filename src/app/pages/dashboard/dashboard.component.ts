@@ -26,6 +26,7 @@ export class DashboardComponent {
   readonly #positionService = inject(PositionService);
 
   botStatus = this.#botService.status;
+  manualMode = this.#botService.manualMode;
   entryPointLogs = this.#botService.entryPointLogs;
   currentPosition = this.#positionService.currentPosition;
 
@@ -35,5 +36,9 @@ export class DashboardComponent {
 
   onBotStatusChanged(status: BotStatus) {
     this.#botService.setStatus(status);
+  }
+
+  onManualModeChanged(manulaMode: boolean) {
+    this.#botService.setManulaMode(manulaMode);
   }
 }

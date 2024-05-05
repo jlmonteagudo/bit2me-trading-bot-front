@@ -15,6 +15,12 @@ export class BotService {
 
   status = toSignal(this.#status$);
 
+  #manualMode$: Observable<boolean | null> = this.#database
+    .object<boolean>('bot/manualMode')
+    .valueChanges();
+
+  manualMode = toSignal(this.#manualMode$);
+
   #entryPointLogs$: Observable<EntryPointLog[]> = this.#database
     .object<string>('logs/entry-point')
     .valueChanges()
@@ -40,5 +46,9 @@ export class BotService {
 
   setStatus(status: BotStatus): Promise<void> {
     return this.#database.object('bot/status').set(status);
+  }
+
+  setManulaMode(manualMode: boolean): Promise<void> {
+    return this.#database.object('bot/manualMode').set(manualMode);
   }
 }
