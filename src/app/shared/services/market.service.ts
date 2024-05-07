@@ -36,4 +36,10 @@ export class MarketService {
       .object(`strategies/candle-performance/symbols/${code.replace('/', '-')}`)
       .remove();
   }
+
+  toggleMarket(code: string, enabled: boolean): Promise<void> {
+    return this.#database
+      .object(`strategies/candle-performance/symbols/${code.replace('/', '-')}`)
+      .set(enabled);
+  }
 }

@@ -25,27 +25,21 @@
           @for (market of markets(); track $index) {
 
           <li class="list-group-item !py-2">
-            <div class="flex">
-              <div class="flex flex-grow items-center">
-                <div>
-                  <span
-                    class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
-                    >{{ market.code }}</span
-                  >
-
-                  <div class="custom-toggle-switch toggle-sm ms-2">
-                    <input
-                      id="size-sm"
-                      name="toggleswitchsize"
-                      type="checkbox"
-                      [checked]="market.enabled"
-                      disabled
-                    />
-                    <label for="size-sm" class="label-success"></label>
-                  </div>
+            <div class="flex justify-between items-center">
+              <div class="flex-col">
+                <span
+                  class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
+                  >{{ market.code }}</span
+                >
+                <div
+                  (click)="toggleMarket(market.code, !market.enabled)"
+                  [ngClass]="{ on: market.enabled }"
+                  class="toggle toggle-sm toggle-success mb-4 ml-0"
+                >
+                  <span></span>
                 </div>
               </div>
-              <div class="text-end">
+              <div>
                 <a
                   aria-label="anchor"
                   href="javascript:void(0);"

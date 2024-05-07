@@ -24,4 +24,8 @@ export class MarketsComponent {
   deleteMarket(code: string) {
     this.#marketService.deleteMarket(code);
   }
+
+  toggleMarket(code: string, enabled: boolean) {
+    this.#marketService.toggleMarket(code, enabled);
+  }
 }
