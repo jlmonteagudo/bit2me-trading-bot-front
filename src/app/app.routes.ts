@@ -32,6 +32,13 @@ export const appRoutes: Route[] = [
                 (m) => m.BotSettingsComponent
               ),
           },
+          {
+            path: 'strategy-settings',
+            loadComponent: () =>
+              import(
+                './pages/strategy-settings/strategy-settings.component'
+              ).then((m) => m.StrategySettingsComponent),
+          },
         ],
       },
     ],
