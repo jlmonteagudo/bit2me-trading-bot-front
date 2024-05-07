@@ -6,7 +6,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { ToastrModule } from 'ngx-toastr';
+import { provideToastr } from 'ngx-toastr';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 
@@ -15,18 +15,19 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     RouterOutlet,
     provideAnimations(),
+    provideToastr({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-center',
+      closeButton: true,
+      progressBar: true,
+    }),
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(environment.firebase)),
       provideDatabase(() => getDatabase()),
-      AngularFireModule.initializeApp(environment.firebase),
-      ToastrModule.forRoot({
-        timeOut: 15000, // 15 seconds
-        closeButton: true,
-        progressBar: true,
-      })
+      AngularFireModule.initializeApp(environment.firebase)
     ),
   ],
 };

@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { BotStatus } from '../enums/bot-status.enum';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { EntryPointLog } from '../interfaces/entry-point-log.interface';
+import { BotSettings } from '../interfaces/bot-settings.interface';
 
 @Injectable({ providedIn: 'root' })
 export class BotService {
@@ -44,11 +45,21 @@ export class BotService {
 
   entryPointLogs = toSignal(this.#entryPointLogs$);
 
+  botSettings$: Observable<BotSettings | null> = this.#database
+    .object<BotSettings>('bot')
+    .valueChanges();
+
+  botSettings = toSignal(this.botSettings$);
+
   setStatus(status: BotStatus): Promise<void> {
     return this.#database.object('bot/status').set(status);
   }
 
   setManulaMode(manualMode: boolean): Promise<void> {
     return this.#database.object('bot/manualMode').set(manualMode);
+  }
+
+  saveSettings(settings: Partial<BotSettings>): Promise<void> {
+    return this.#database.object('bot').update(settings);
   }
 }

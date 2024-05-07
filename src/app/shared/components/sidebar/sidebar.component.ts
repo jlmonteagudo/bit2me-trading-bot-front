@@ -132,6 +132,8 @@ export class SidebarComponent {
 
   //Active Nav State
   setNavActive(item: any) {
+    console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE');
+
     this.menuItems?.filter((menuItem) => {
       if (menuItem !== item) {
         menuItem.active = false;
@@ -297,6 +299,12 @@ export class SidebarComponent {
         dataToggled: 'double-menu-open',
       });
     }
+  }
+
+  menuClose() {
+    const html = document.documentElement;
+    html.setAttribute('data-toggled', 'close');
+    document.querySelector('#responsive-overlay')?.classList.remove('active');
   }
 
   // Replace this method with your actual method or service call to update the theme

@@ -74,7 +74,7 @@
                 class="side-menu__item"
                 [routerLink]="!menuItem.type ? null : [menuItem.path]"
                 routerLinkActive="active"
-                (click)="setNavActive(menuItem); menuOpen()"
+                (click)="setNavActive(menuItem); menuClose()"
               >
                 @if(menuItem.icon){
 

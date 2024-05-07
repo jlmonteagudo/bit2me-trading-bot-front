@@ -25,6 +25,13 @@ export const appRoutes: Route[] = [
                 (m) => m.MarketsComponent
               ),
           },
+          {
+            path: 'bot-settings',
+            loadComponent: () =>
+              import('./pages/bot-settings/bot-settings.component').then(
+                (m) => m.BotSettingsComponent
+              ),
+          },
         ],
       },
     ],
