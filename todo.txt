@@ -1,19 +1,19 @@
 * New page (bot pairs) to manage pairs (only add and delete)
 * Authentication
 * Bot readonly mode: show entry points only
-- New page (manage strategy) to manage the strategy: candle interval, number of candles, stop loss percentage
-- New page (manage bot) to manage bot cycle interval
+* New page (manage strategy) to manage the strategy: candle interval, number of candles, stop loss percentage
+* New page (manage bot) to manage bot cycle interval
+* Improve page to manage pairs to enable/disable pairs
+- In dashboard entry points list section, show two buttons.
+  - One to show a new page with the ticker information and the price candle chart
+  - One only visible in manual mode to create a new position
 - Dashboard: Widget balance (show the balance of current position, in base and quote)
 - Dashboard: Widget current price
 - Dashboard: Widget recent positions
 - New page (tickers) to watch tickers order by percentage price variation and allow select which pairs include in bot (in mode disabled)
-- Improve page to manage pairs to enable/disable pairs
 - New page (price chart) to view candle chart for selected ticker
 - New page (positions) to view all user positions and view the detail of each position
 - New page (balance) to view user balance
 - Include icons: Upload logos to my bucket from https://cryptologos.cc/
 - Apply AI. Select one ticker and ask to AI for its potential performance sending historical candles
 - Allow to close the current position manually
-- In dashboard entry points list section, show two buttons.
-  - One to show a new page with the ticker information and the price candle chart
-  - One only visible in manual mode to create a new position
