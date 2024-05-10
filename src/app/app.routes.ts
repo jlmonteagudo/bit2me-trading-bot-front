@@ -39,6 +39,13 @@ export const appRoutes: Route[] = [
                 './pages/strategy-settings/strategy-settings.component'
               ).then((m) => m.StrategySettingsComponent),
           },
+          {
+            path: 'candles-chart',
+            loadComponent: () =>
+              import('./pages/candles-chart/candles-chart.component').then(
+                (m) => m.CandlesChartComponent
+              ),
+          },
         ],
       },
     ],

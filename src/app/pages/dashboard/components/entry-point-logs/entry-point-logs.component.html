@@ -10,23 +10,23 @@
       >
         <a href="javascript:void(0);" class="flex-column items-start">
           <div class="flex w-full justify-between items-center">
-            <p class="tx-14 mb-0 font-normal text-dark">
+            <div class="tx-14 mb-0 font-normal text-dark flex-row">
               {{ entryPoint.symbol }}
-            </p>
 
-            <p class="tx-14 mb-0 font-normal text-dark">
-              @if (entryPoint.areAllCandlesPositive) {
-              <span class="badge bg-success/10 text-success"
-                >Ready to trade</span
-              >
-              } @else {
-              <span class="badge bg-danger/10 text-danger"
-                >Not ready to trade</span
-              >
-              }
-            </p>
+              <p class="tx-14 mb-0 font-normal text-dark">
+                @if (entryPoint.areAllCandlesPositive) {
+                <span class="badge bg-success/10 text-success !pl-0"
+                  >Ready to trade</span
+                >
+                } @else {
+                <span class="badge bg-danger/10 text-danger !pl-0"
+                  >Not ready to trade</span
+                >
+                }
+              </p>
+            </div>
 
-            <p class="text-success mb-0 font-normal tx-13">
+            <div class="text-success mb-0 font-normal tx-13">
               @if (entryPoint.intervalPercentagePriceVariation >= 0) {
 
               <span class="text-success"
@@ -46,7 +46,23 @@
               ></span>
 
               }
-            </p>
+            </div>
+
+            <div class="flex">
+              <a
+                aria-label="button"
+                type="button"
+                class="ti-btn ti-btn-icon ti-btn-light me-[0.365rem]"
+                [routerLink]="[
+                  '/candles-chart',
+                  { symbol: entryPoint.symbol, interval: candleInterval() }
+                ]"
+              >
+                <i
+                  class="ti ti-chart-candle font-normal text-dark opacity-[0.7]"
+                ></i>
+              </a>
+            </div>
           </div>
         </a>
       </li>

@@ -7,6 +7,7 @@ import { BotStatus } from '../../shared/enums/bot-status.enum';
 import { CurrentPositionDetailComponent } from './components/current-position-detail/current-position-detail.component';
 import { CurrentPositionSummaryComponent } from './components/current-position-summary/current-position-summary.component';
 import { PositionService } from '../../shared/services/positions.service';
+import { StrategyService } from '../../shared/services/strategy.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,11 +25,13 @@ import { PositionService } from '../../shared/services/positions.service';
 export class DashboardComponent {
   readonly #botService = inject(BotService);
   readonly #positionService = inject(PositionService);
+  readonly #strategyService = inject(StrategyService);
 
   botStatus = this.#botService.status;
   manualMode = this.#botService.manualMode;
   entryPointLogs = this.#botService.entryPointLogs;
   currentPosition = this.#positionService.currentPosition;
+  strategySettings = this.#strategyService.strategySettings;
 
   get BotStatus() {
     return BotStatus;

@@ -13,6 +13,8 @@ export const environment = {
     messagingSenderId: '353175042330',
     appId: '1:353175042330:web:aac1063fe10bbe740d14a3',
   },
+  apiDomain: (resource: string) =>
+    `https://${resource}-iivwz62j7q-uc.a.run.app`,
 };
 
 /*

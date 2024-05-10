@@ -1,5 +1,9 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { RouterOutlet, provideRouter } from '@angular/router';
+import {
+  RouterOutlet,
+  provideRouter,
+  withComponentInputBinding,
+} from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app.routes';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -9,11 +13,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { provideToastr } from 'ngx-toastr';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes),
+    provideRouter(appRoutes, withComponentInputBinding()),
     RouterOutlet,
+    provideHttpClient(),
     provideAnimations(),
     provideToastr({
       timeOut: 5000,

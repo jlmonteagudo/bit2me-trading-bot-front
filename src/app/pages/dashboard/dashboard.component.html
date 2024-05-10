@@ -11,7 +11,10 @@
     <app-current-position-summary [currentPosition]="currentPosition()" />
     <app-current-position-detail [currentPosition]="currentPosition()" />
     } @if (botStatus() === BotStatus.On) {
-    <app-entry-point-logs [entryPointLogs]="entryPointLogs()" />
+    <app-entry-point-logs
+      [entryPointLogs]="entryPointLogs()"
+      [candleInterval]="strategySettings()?.candleInterval?.toString()"
+    />
     }
   </div>
 </div>
