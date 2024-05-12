@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BotStatusComponent } from './components/bot-status/bot-status.component';
 import { EntryPointLogsComponent } from './components/entry-point-logs/entry-point-logs.component';
@@ -33,6 +33,10 @@ export class DashboardComponent {
   currentPosition = this.#positionService.currentPosition;
   strategySettings = this.#strategyService.strategySettings;
 
+  allowCreateManualPosition = computed(
+    () => !this.currentPosition() && !!this.manualMode()
+  );
+
   get BotStatus() {
     return BotStatus;
   }
@@ -43,5 +47,13 @@ export class DashboardComponent {
 
   onManualModeChanged(manulaMode: boolean) {
     this.#botService.setManulaMode(manulaMode);
+  }
+
+  onOpenPosition(symbol: string) {
+    this.#positionService.openNewPosition(symbol);
+  }
+
+  onCloseCurrentPosition() {
+    this.#positionService.closeCurrentPosition();
   }
 }

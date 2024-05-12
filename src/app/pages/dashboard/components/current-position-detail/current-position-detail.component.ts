@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Position } from '../../../../shared/interfaces/position.interface';
 import { CurrencyBySymbolPipe } from '../../../../shared/pipes/currency-by-symbol.pipe';
@@ -12,4 +12,11 @@ import { CurrencyBySymbolPipe } from '../../../../shared/pipes/currency-by-symbo
 })
 export class CurrentPositionDetailComponent {
   currentPosition = input<Position>();
+  closeCurrentPosition = output<boolean>();
+  isClosingCurrentPosition = false;
+
+  closePosition() {
+    this.closeCurrentPosition.emit(true);
+    this.isClosingCurrentPosition = true;
+  }
 }

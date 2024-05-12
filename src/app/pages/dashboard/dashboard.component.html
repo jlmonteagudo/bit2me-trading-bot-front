@@ -9,11 +9,17 @@
 
     @if (currentPosition()) {
     <app-current-position-summary [currentPosition]="currentPosition()" />
-    <app-current-position-detail [currentPosition]="currentPosition()" />
+
+    <app-current-position-detail
+      [currentPosition]="currentPosition()"
+      (closeCurrentPosition)="onCloseCurrentPosition()"
+    />
     } @if (botStatus() === BotStatus.On) {
     <app-entry-point-logs
       [entryPointLogs]="entryPointLogs()"
       [candleInterval]="strategySettings()?.candleInterval?.toString()"
+      [allowCreateManualPosition]="allowCreateManualPosition()"
+      (openPosition)="onOpenPosition($event)"
     />
     }
   </div>

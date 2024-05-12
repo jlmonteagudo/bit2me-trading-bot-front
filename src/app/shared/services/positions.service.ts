@@ -16,4 +16,12 @@ export class PositionService {
     .pipe(map((positions) => positions[0]));
 
   currentPosition = toSignal(this.#currentPosition$);
+
+  openNewPosition(symbol: string) {
+    this.#database.object('botEvents/openNewPosition').set(symbol);
+  }
+
+  closeCurrentPosition() {
+    this.#database.object('botEvents/closeCurrentPosition').set(true);
+  }
 }

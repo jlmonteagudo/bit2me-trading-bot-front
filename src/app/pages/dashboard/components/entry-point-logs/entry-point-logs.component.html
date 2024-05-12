@@ -48,7 +48,7 @@
               }
             </div>
 
-            <div class="flex">
+            <div class="actions flex">
               <a
                 aria-label="button"
                 type="button"
@@ -62,6 +62,19 @@
                   class="ti ti-chart-candle font-normal text-dark opacity-[0.7]"
                 ></i>
               </a>
+
+              @if(allowCreateManualPosition()) {
+              <button
+                type="button"
+                class="ti-btn ti-btn-icon ti-btn-light me-[0.365rem]"
+                (click)="openPosition.emit(entryPoint.symbol)"
+              >
+                <i
+                  class="ti ti-businessplan font-normal text-dark opacity-[0.7]"
+                ></i>
+              </button>
+
+              }
             </div>
           </div>
         </a>

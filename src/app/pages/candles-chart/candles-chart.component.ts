@@ -4,7 +4,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { CandleService } from '../../shared/services/candle.service';
 import { lastValueFrom } from 'rxjs';
 
-const NUMBER_OF_CANDLES = 100;
+const NUMBER_OF_CANDLES = 50;
 
 @Component({
   selector: 'app-candles-chart',
