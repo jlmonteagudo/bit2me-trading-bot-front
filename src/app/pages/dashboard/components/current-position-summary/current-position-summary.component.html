@@ -10,12 +10,12 @@
       <div>
         <p class="mb-1">{{ currentPosition()?.symbol }}</p>
         <p class="text-[1.25rem] mb-0 font-semibold leading-none text-success">
-          {{ estimatedProfit() | number : "1.0-10" }}
+          {{ estimatedProfit() | number : "1.0-2" }}
           {{ currentPosition()?.symbol | currencyBySymbol : "quote" }}
         </p>
       </div>
       <div class="ms-auto text-end">
-        <p class="mb-0 text-success">
+        <p class="text-[1.25rem] mb-0 font-semibold text-success">
           +{{ estimatedProfitPercentage() | number : "1.0-2" }}%
           <i class="ti ti-arrow-big-up-lines ms-1"></i>
         </p>
@@ -30,12 +30,12 @@
       <div>
         <p class="mb-1">{{ currentPosition()?.symbol }}</p>
         <p class="text-[1.25rem] mb-0 font-semibold leading-none text-danger">
-          {{ estimatedProfit() | number : "1.0-10" }}
+          {{ estimatedProfit() | number : "1.0-2" }}
           {{ currentPosition()?.symbol | currencyBySymbol : "quote" }}
         </p>
       </div>
       <div class="ms-auto text-end">
-        <p class="mb-0 text-danger">
+        <p class="text-[1.25rem] mb-0 font-semibold text-danger">
           {{ estimatedProfitPercentage() | number : "1.0-2" }}%
           <i class="ti ti-arrow-big-down-lines ms-1"></i>
         </p>

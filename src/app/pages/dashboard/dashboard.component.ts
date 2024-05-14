@@ -8,6 +8,7 @@ import { CurrentPositionDetailComponent } from './components/current-position-de
 import { CurrentPositionSummaryComponent } from './components/current-position-summary/current-position-summary.component';
 import { PositionService } from '../../shared/services/positions.service';
 import { StrategyService } from '../../shared/services/strategy.service';
+import { LastPositionsComponent } from './components/last-positions/last-positions.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +19,7 @@ import { StrategyService } from '../../shared/services/strategy.service';
     EntryPointLogsComponent,
     CurrentPositionDetailComponent,
     CurrentPositionSummaryComponent,
+    LastPositionsComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -32,6 +34,7 @@ export class DashboardComponent {
   entryPointLogs = this.#botService.entryPointLogs;
   currentPosition = this.#positionService.currentPosition;
   strategySettings = this.#strategyService.strategySettings;
+  lastPositions = this.#positionService.lastPositions;
 
   allowCreateManualPosition = computed(
     () => !this.currentPosition() && !!this.manualMode()

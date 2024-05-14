@@ -24,4 +24,33 @@ export class PositionService {
   closeCurrentPosition() {
     this.#database.object('botEvents/closeCurrentPosition').set(true);
   }
+
+  #lastPositions$: Observable<Position[]> = this.#database
+    .list<Position>('positions', (ref) => ref.orderByKey().limitToLast(10))
+    .valueChanges()
+    .pipe(map((positions) => positions.reverse()));
+
+  lastPositions = toSignal(this.#lastPositions$);
+
+  /*
+  getPositionsPage(startKey?: string): Observable<any[]> {
+    let query = this.#database.list('positions', (ref) => {
+      return ref.orderByKey().limitToLast(11); // Obtener las últimas 11 posiciones
+    });
+
+    if (startKey) {
+      query = this.#database.list('positions', (ref) => {
+        return ref.orderByKey().endBefore(startKey).limitToLast(11); // Obtener las últimas 11 posiciones antes de la clave especificada
+      });
+    }
+
+    return query.snapshotChanges().pipe(
+      map((changes) => {
+        // Eliminar el último elemento que es el que se usó para paginar
+        changes.pop();
+        return changes.reverse();
+      })
+    );
+  }
+  */
 }
