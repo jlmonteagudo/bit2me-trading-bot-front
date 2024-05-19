@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, computed, inject } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -13,6 +13,10 @@ export class StrategyService {
     .valueChanges();
 
   strategySettings = toSignal(this.strategySettings$);
+
+  candleInterval = computed(() =>
+    this.strategySettings()?.candleInterval?.toString()
+  );
 
   saveSettings(settings: Partial<StrategySettings>): Promise<void> {
     return this.#database

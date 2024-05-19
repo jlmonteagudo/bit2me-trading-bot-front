@@ -14,12 +14,14 @@
 
     <app-current-position-detail
       [currentPosition]="currentPosition()"
+      [currentTicker]="currentTicker()"
+      [candleInterval]="candleInterval()"
       (closeCurrentPosition)="onCloseCurrentPosition()"
     />
     } @if (botStatus() === BotStatus.On) {
     <app-entry-point-logs
       [entryPointLogs]="entryPointLogs()"
-      [candleInterval]="strategySettings()?.candleInterval?.toString()"
+      [candleInterval]="candleInterval()"
       [allowCreateManualPosition]="allowCreateManualPosition()"
       (openPosition)="onOpenPosition($event)"
     />

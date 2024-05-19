@@ -21,4 +21,8 @@ export class TickerService {
     );
 
   tickers = toSignal(this.#tickers$, { initialValue: [] });
+
+  getTicker(symbol: string) {
+    return this.tickers()?.find((ticker) => ticker.symbol === symbol);
+  }
 }

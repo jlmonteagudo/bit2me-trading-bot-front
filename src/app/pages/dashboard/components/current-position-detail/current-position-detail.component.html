@@ -11,6 +11,20 @@
             class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
             >{{ currentPosition()?.symbol }}</span
           >
+
+          <a
+            aria-label="button"
+            type="button"
+            class="ti-btn ti-btn-icon ti-btn-light ltr:float-right rtl:float-left"
+            [routerLink]="[
+              '/candles-chart',
+              { symbol: currentPosition()?.symbol, interval: candleInterval() }
+            ]"
+          >
+            <i
+              class="ti ti-chart-candle font-normal text-dark opacity-[0.7]"
+            ></i>
+          </a>
         </div>
 
         <div class="text-[.875rem] py-2">
@@ -67,6 +81,17 @@
           ><span
             class="text-dark font-semibold ltr:float-right rtl:float-left"
             >{{ currentPosition()?.symbol | currencyBySymbol : "quote" }}</span
+          >
+        </div>
+
+        <div class="text-[.875rem] py-2">
+          <span class="font-semibold text-dark">Current price:</span
+          ><span
+            class="text-[#8c9097] dark:text-white/50 ms-2 text-[.875rem] inline-block"
+            >{{ currentTicker()?.close | number : "1.0-10" }}</span
+          ><span
+            class="text-dark font-semibold ltr:float-right rtl:float-left"
+            >{{ currentTicker()?.symbol | currencyBySymbol : "quote" }}</span
           >
         </div>
 

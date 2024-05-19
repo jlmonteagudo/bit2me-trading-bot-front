@@ -10,6 +10,7 @@ import { PositionService } from '../../shared/services/positions.service';
 import { StrategyService } from '../../shared/services/strategy.service';
 import { LastPositionsComponent } from './components/last-positions/last-positions.component';
 import { BalanceComponent } from './components/balance/balance.component';
+import { TickerService } from '../../shared/services/ticker.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +31,7 @@ export class DashboardComponent {
   readonly #botService = inject(BotService);
   readonly #positionService = inject(PositionService);
   readonly #strategyService = inject(StrategyService);
+  readonly #tickerService = inject(TickerService);
 
   botStatus = this.#botService.status;
   manualMode = this.#botService.manualMode;
@@ -37,6 +39,14 @@ export class DashboardComponent {
   currentPosition = this.#positionService.currentPosition;
   strategySettings = this.#strategyService.strategySettings;
   lastPositions = this.#positionService.lastPositions;
+
+  candleInterval = this.#strategyService.candleInterval;
+
+  currentTicker = computed(() => {
+    return this.currentPosition()
+      ? this.#tickerService.getTicker(this.currentPosition()?.symbol!)
+      : undefined;
+  });
 
   allowCreateManualPosition = computed(
     () => !this.currentPosition() && !!this.manualMode()

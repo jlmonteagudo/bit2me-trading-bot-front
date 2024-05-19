@@ -15,11 +15,7 @@ export class TickersComponent {
   readonly #tickerService = inject(TickerService);
   readonly #strategyService = inject(StrategyService);
 
-  strategySettings = this.#strategyService.strategySettings;
-
-  candleInterval = computed(() =>
-    this.strategySettings()?.candleInterval?.toString()
-  );
+  candleInterval = this.#strategyService.candleInterval;
 
   tickers = this.#tickerService.tickers;
 }
