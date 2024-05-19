@@ -1,10 +1,12 @@
-import { Component, OnInit, inject, input } from '@angular/core';
+import { Component, OnInit, inject, input, model } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { CandleService } from '../../shared/services/candle.service';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, interval, tap } from 'rxjs';
 
 const NUMBER_OF_CANDLES = 50;
+const POLLING_MILLISECONDS = 5000;
 
 @Component({
   selector: 'app-candles-chart',
@@ -17,7 +19,7 @@ export class CandlesChartComponent implements OnInit {
   readonly #candleService = inject(CandleService);
 
   symbol = input<string>();
-  interval = input<string>();
+  interval = model<string>();
 
   chartOptions: any;
 
@@ -57,6 +59,13 @@ export class CandlesChartComponent implements OnInit {
         },
       },
     };
+
+    interval(POLLING_MILLISECONDS)
+      .pipe(
+        takeUntilDestroyed(),
+        tap(() => this.loadCandles(this.symbol(), this.interval()))
+      )
+      .subscribe();
   }
 
   ngOnInit() {
@@ -65,6 +74,8 @@ export class CandlesChartComponent implements OnInit {
 
   async loadCandles(symbol: string | undefined, interval: string | undefined) {
     if (!symbol || !interval) return;
+
+    this.interval.set(interval);
 
     const candles = await lastValueFrom(
       this.#candleService.getCandles(symbol, interval, NUMBER_OF_CANDLES)

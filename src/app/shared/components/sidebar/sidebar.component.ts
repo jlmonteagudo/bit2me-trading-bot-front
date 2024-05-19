@@ -132,8 +132,6 @@ export class SidebarComponent {
 
   //Active Nav State
   setNavActive(item: any) {
-    console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE');
-
     this.menuItems?.filter((menuItem) => {
       if (menuItem !== item) {
         menuItem.active = false;
