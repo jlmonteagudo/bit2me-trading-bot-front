@@ -9,6 +9,7 @@ import { CurrentPositionSummaryComponent } from './components/current-position-s
 import { PositionService } from '../../shared/services/positions.service';
 import { StrategyService } from '../../shared/services/strategy.service';
 import { LastPositionsComponent } from './components/last-positions/last-positions.component';
+import { BalanceComponent } from './components/balance/balance.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +21,7 @@ import { LastPositionsComponent } from './components/last-positions/last-positio
     CurrentPositionDetailComponent,
     CurrentPositionSummaryComponent,
     LastPositionsComponent,
+    BalanceComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
