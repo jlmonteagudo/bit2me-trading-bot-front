@@ -32,6 +32,13 @@ export class PositionService {
 
   lastPositions = toSignal(this.#lastPositions$);
 
+  #positions$: Observable<Position[]> = this.#database
+    .list<Position>('positions', (ref) => ref.orderByKey().limitToLast(100))
+    .valueChanges()
+    .pipe(map((positions) => positions.reverse()));
+
+  positions = toSignal(this.#positions$);
+
   /*
   getPositionsPage(startKey?: string): Observable<any[]> {
     let query = this.#database.list('positions', (ref) => {

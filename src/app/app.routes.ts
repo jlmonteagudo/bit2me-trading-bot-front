@@ -60,6 +60,13 @@ export const appRoutes: Route[] = [
                 (m) => m.TickersComponent
               ),
           },
+          {
+            path: 'positions',
+            loadComponent: () =>
+              import('./pages/positions/positions.component').then(
+                (m) => m.PositionsComponent
+              ),
+          },
         ],
       },
     ],

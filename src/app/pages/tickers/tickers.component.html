@@ -18,8 +18,18 @@
         <tr
           class="border border-inherit border-solid hover:bg-gray-100 dark:border-defaultborder/10 dark:hover:bg-light"
         >
-          <td>{{ ticker.symbol }}</td>
-          <td class="!text-end">{{ ticker.close }}</td>
+          <td>
+            <span
+              class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
+              >{{ ticker.symbol }}</span
+            >
+          </td>
+          <td class="!text-end">
+            <span
+              class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
+              >{{ ticker.close }}</span
+            >
+          </td>
           <td class="!text-end">
             <a
               [routerLink]="[
