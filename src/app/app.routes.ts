@@ -46,6 +46,13 @@ export const appRoutes: Route[] = [
                 (m) => m.CandlesChartComponent
               ),
           },
+          {
+            path: 'balance',
+            loadComponent: () =>
+              import('./pages/balance/balance.component').then(
+                (m) => m.BalanceComponent
+              ),
+          },
         ],
       },
     ],

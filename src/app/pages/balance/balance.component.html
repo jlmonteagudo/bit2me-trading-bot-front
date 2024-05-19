@@ -1,0 +1,17 @@
+<div class="box mt-2">
+  <div class="box-header md:justify-between flex-wrap">
+    <div class="box-title">Balance</div>
+  </div>
+  <div class="box-body">
+    @for (balance of balances; track $index) {
+    <div class="flex w-full justify-between items-center">
+      <span class="tx-14 mb-0 font-normal text-dark">{{
+        balance.currency
+      }}</span>
+      <span class="tx-14 mb-0 font-normal text-dark">{{
+        balance.balance | number
+      }}</span>
+    </div>
+    }
+  </div>
+</div>
