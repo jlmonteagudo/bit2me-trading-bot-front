@@ -2,26 +2,36 @@
   <div class="box-header md:justify-between flex-wrap">
     <div class="box-title">Balance</div>
   </div>
-  <div class="box-body">
-    @if(quoteBalance()) {
-    <div class="flex w-full justify-between items-center">
-      <span class="tx-14 mb-0 font-normal text-dark">{{
-        quoteBalance()!.currency
-      }}</span>
-      <span class="tx-14 mb-0 font-normal text-dark">{{
-        quoteBalance()!.balance + quoteBalance()!.blockedBalance
-          | number : "1.0-2"
-      }}</span>
-    </div>
-    } @if(baseBalance()) {
-    <div class="flex w-full justify-between items-center">
-      <span class="tx-14 mb-0 font-normal text-dark">{{
-        baseBalance()!.currency
-      }}</span>
-      <span class="tx-14 mb-0 font-normal text-dark">{{
-        baseBalance()!.balance + baseBalance()!.blockedBalance
-      }}</span>
-    </div>
-    }
+  <div class="box-body !p-0">
+    <ul class="border-0">
+      @if(quoteBalance()) {
+      <li
+        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
+      >
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">{{
+            quoteBalance()!.currency
+          }}</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{
+            quoteBalance()!.balance + quoteBalance()!.blockedBalance
+              | number : "1.0-2"
+          }}</span>
+        </div>
+      </li>
+      } @if(baseBalance()) {
+      <li
+        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
+      >
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">{{
+            baseBalance()!.currency
+          }}</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{
+            baseBalance()!.balance + baseBalance()!.blockedBalance
+          }}</span>
+        </div>
+      </li>
+      }
+    </ul>
   </div>
 </div>

@@ -53,6 +53,13 @@ export const appRoutes: Route[] = [
                 (m) => m.BalanceComponent
               ),
           },
+          {
+            path: 'tickers',
+            loadComponent: () =>
+              import('./pages/tickers/tickers.component').then(
+                (m) => m.TickersComponent
+              ),
+          },
         ],
       },
     ],

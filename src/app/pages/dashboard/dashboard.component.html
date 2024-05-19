@@ -7,7 +7,7 @@
       (manualModeChanged)="onManualModeChanged($event)"
     />
 
-    <app-balance />
+    <app-balance [symbol]="currentPosition()?.symbol" />
 
     @if (currentPosition()) {
     <app-current-position-summary [currentPosition]="currentPosition()" />
