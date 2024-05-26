@@ -3,6 +3,43 @@
     <div class="box-title">Tickers</div>
   </div>
   <div class="box-body !p-0">
+    <div class="p-4">
+      <div class="mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Filter markets"
+          [ngModel]="searchTerm()"
+          (ngModelChange)="searchTerm.set($event)"
+        />
+      </div>
+
+      <div class="flex gap-4">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            value="ALL"
+            name="filterGroup"
+            [ngModel]="filterGroup()"
+            (ngModelChange)="filterGroup.set($event)"
+          />
+          <label class="form-check-label"> All markets </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            value="USDT"
+            name="filterGroup"
+            [ngModel]="filterGroup()"
+            (ngModelChange)="filterGroup.set($event)"
+          />
+          <label class="form-check-label"> Only USDT markets </label>
+        </div>
+      </div>
+    </div>
+
     <table
       class="table table-hover whitespace-nowrap min-w-full table-bordered"
     >
@@ -14,7 +51,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (ticker of (tickers() || []); track $index) {
+        @for (ticker of filteredTickers(); track $index) {
         <tr
           class="border border-inherit border-solid hover:bg-gray-100 dark:border-defaultborder/10 dark:hover:bg-light"
         >
