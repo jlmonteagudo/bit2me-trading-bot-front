@@ -4,8 +4,6 @@ import { Observable, map, tap } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Ticker } from '../interfaces/ticker';
 
-export type Candle = number[];
-
 @Injectable({ providedIn: 'root' })
 export class TickerService {
   readonly #database = inject(AngularFireDatabase);

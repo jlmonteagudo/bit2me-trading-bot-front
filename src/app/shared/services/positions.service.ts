@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Position } from '../interfaces/position.interface';
 
@@ -13,7 +13,14 @@ export class PositionService {
       ref.orderByChild('status').equalTo('open')
     )
     .valueChanges()
-    .pipe(map((positions) => positions[0]));
+    .pipe(
+      map((positions) => positions[0]),
+      filter((position) => !!position),
+      map((position) => {
+        position.profitPercentage = this.getProfitPercentage(position);
+        return position;
+      })
+    );
 
   currentPosition = toSignal(this.#currentPosition$);
 
@@ -28,16 +35,37 @@ export class PositionService {
   #lastPositions$: Observable<Position[]> = this.#database
     .list<Position>('positions', (ref) => ref.orderByKey().limitToLast(10))
     .valueChanges()
-    .pipe(map((positions) => positions.reverse()));
+    .pipe(
+      map((positions) => positions.reverse()),
+      map((positions) =>
+        positions.map((position) => {
+          position.profitPercentage = this.getProfitPercentage(position);
+          return position;
+        })
+      )
+    );
 
   lastPositions = toSignal(this.#lastPositions$);
 
   #positions$: Observable<Position[]> = this.#database
     .list<Position>('positions', (ref) => ref.orderByKey().limitToLast(100))
     .valueChanges()
-    .pipe(map((positions) => positions.reverse()));
+    .pipe(
+      map((positions) => positions.reverse()),
+      map((positions) =>
+        positions.map((position) => {
+          position.profitPercentage = this.getProfitPercentage(position);
+          return position;
+        })
+      )
+    );
 
   positions = toSignal(this.#positions$);
+
+  getProfitPercentage(position: Position): number {
+    if (!position) return 0;
+    return ((position.profit || 0) / position.entryQuoteAmount) * 100;
+  }
 
   /*
   getPositionsPage(startKey?: string): Observable<any[]> {

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { CandleService } from '../../shared/services/candle.service';
 import { lastValueFrom, interval, tap } from 'rxjs';
+import { Candle } from '../../shared/interfaces/candle';
 
 const NUMBER_OF_CANDLES = 50;
 const POLLING_MILLISECONDS = 5000;
@@ -22,6 +23,7 @@ export class CandlesChartComponent implements OnInit {
   interval = model<string>();
 
   chartOptions: any;
+  lastCandle?: Candle;
 
   constructor() {
     this.chartOptions = {
@@ -82,8 +84,8 @@ export class CandlesChartComponent implements OnInit {
     );
 
     const formattedCandles = candles.map((candle) => ({
-      x: new Date(candle[0]),
-      y: [candle[1], candle[2], candle[3], candle[4]],
+      x: new Date(candle.timestamp),
+      y: [candle.open, candle.high, candle.low, candle.close],
     }));
 
     this.chartOptions.series = [
@@ -91,5 +93,7 @@ export class CandlesChartComponent implements OnInit {
         data: formattedCandles,
       },
     ];
+
+    this.lastCandle = candles[candles.length - 1];
   }
 }

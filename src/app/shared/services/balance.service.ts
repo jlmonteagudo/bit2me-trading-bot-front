@@ -4,8 +4,6 @@ import { Observable, map } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Balance } from '../interfaces/balance';
 
-export type Candle = number[];
-
 @Injectable({ providedIn: 'root' })
 export class BalanceService {
   readonly #database = inject(AngularFireDatabase);

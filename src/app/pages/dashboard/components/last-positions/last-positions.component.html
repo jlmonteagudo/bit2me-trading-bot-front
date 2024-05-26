@@ -25,9 +25,15 @@
             <p class="mb-0 font-semibold text-success">
               +{{ position.profit | number : "1.0-2" }}$
             </p>
+            <p class="mb-0 font-semibold text-success">
+              +{{ position.profitPercentage | number : "1.0-2" }}%
+            </p>
             } @else {
             <p class="mb-0 font-semibold text-danger">
               {{ position.profit | number : "1.0-2" }}$
+            </p>
+            <p class="mb-0 font-semibold text-danger">
+              {{ position.profitPercentage | number : "1.0-2" }}%
             </p>
             }
           </div>

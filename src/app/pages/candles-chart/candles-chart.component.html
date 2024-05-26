@@ -34,6 +34,14 @@
       </button>
     </div>
 
+    @if(lastCandle) {
+    <div class="p-4">
+      <p class="font-semibold text-[0.90rem]">Last Candle</p>
+      <span class="mr-2">Price: {{ lastCandle.close }}</span>
+      <span>%: {{ lastCandle.percentage | number : "1.0-2" }}</span>
+    </div>
+    }
+
     <div id="crypto" class="p-4" class="chart-container">
       <apx-chart
         [series]="chartOptions.series"
