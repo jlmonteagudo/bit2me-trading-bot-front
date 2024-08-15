@@ -17,3 +17,12 @@
 - Dashboard: Widget current price
 - Include icons: Upload logos to my bucket from https://cryptologos.cc/
 - Apply AI. Select one ticker and ask to AI for its potential performance sending historical candles
+
+------------------------------------
+
+- Listado de las últimas 20 posiciones en la página principal
+- Gestionar las fees, tanto en el front como en el back
+- Asociar las órdenes (de entrada y salida) a las posiciones
+- Conectarse al websocket de órdenes para ver si en el servidor cambia la orden de entrada de la posición abierta, y en ese caso, si el estado es cerrado, cerrar automáticamente la posición
+- Posibilidad de crear una orden stop loss al crear la posición. Si la posición la cierra el usuario haciendo una venta hay que tener en cuenta que lo primero que hay que hacer es borrar la orden stop loss.
+

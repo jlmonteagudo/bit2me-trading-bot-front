@@ -1,0 +1,50 @@
+    <div class="box">
+      <div class="box-header">
+        <div class="box-title">Open position</div>
+      </div>
+      <div class="box-body">
+        <form [formGroup]="positionForm">
+          <div class="grid grid-cols-12 mb-4">
+            <label
+              for="symbol"
+              class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm"
+              >Symbol:</label
+            >
+            <div class="sm:col-span-10 col-span-12">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="symbol"
+                placeholder="Symbol"
+                formControlName="symbol"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label
+              for="quoteOrderAmount"
+              class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm"
+              >Quote order amount</label
+            >
+            <div class="sm:col-span-10 col-span-12">
+              <input
+                type="number"
+                class="form-control form-control-sm"
+                id="quoteOrderAmount"
+                placeholder="Quote order amount"
+                formControlName="quoteOrderAmount"
+              />
+            </div>
+          </div>
+
+          <button
+            class="ti-btn ti-btn-primary-full !mb-0"
+            type="submit"
+            (click)="savePosition()"
+          >
+            Open position
+          </button>
+        </form>
+      </div>
+    </div>

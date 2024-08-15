@@ -1,96 +1,100 @@
-<div class="box mt-2">
-  <div class="box-header md:justify-between flex-wrap">
-    <div class="box-title">Tickers</div>
-  </div>
-  <div class="box-body !p-0">
-    <div class="p-4">
-      <div class="mb-2">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Filter markets"
-          [ngModel]="searchTerm()"
-          (ngModelChange)="searchTerm.set($event)"
-        />
+<div class="grid grid-cols-12 gap-x-6 mt-6">
+  <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
+    <div class="box">
+      <div class="box-header md:justify-between flex-wrap">
+        <div class="box-title">Tickers</div>
       </div>
+      <div class="box-body !p-0">
+        <div class="p-4">
+          <div class="mb-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Filter markets"
+              [ngModel]="searchTerm()"
+              (ngModelChange)="searchTerm.set($event)"
+            />
+          </div>
 
-      <div class="flex gap-4">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            value="ALL"
-            name="filterGroup"
-            [ngModel]="filterGroup()"
-            (ngModelChange)="filterGroup.set($event)"
-          />
-          <label class="form-check-label"> All markets </label>
+          <div class="flex gap-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="ALL"
+                name="filterGroup"
+                [ngModel]="filterGroup()"
+                (ngModelChange)="filterGroup.set($event)"
+              />
+              <label class="form-check-label"> All markets </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="USDT"
+                name="filterGroup"
+                [ngModel]="filterGroup()"
+                (ngModelChange)="filterGroup.set($event)"
+              />
+              <label class="form-check-label"> Only USDT markets </label>
+            </div>
+          </div>
         </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            value="USDT"
-            name="filterGroup"
-            [ngModel]="filterGroup()"
-            (ngModelChange)="filterGroup.set($event)"
-          />
-          <label class="form-check-label"> Only USDT markets </label>
-        </div>
+
+        <table
+          class="table table-hover whitespace-nowrap min-w-full table-bordered"
+        >
+          <thead>
+            <tr>
+              <th scope="col" class="text-start">Symbol</th>
+              <th scope="col" class="text-start">Price</th>
+              <th scope="col" class="text-start">% Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (ticker of filteredTickers(); track $index) {
+            <tr
+              class="border border-inherit border-solid hover:bg-gray-100 dark:border-defaultborder/10 dark:hover:bg-light"
+            >
+              <td>
+                <span
+                  class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
+                  >{{ ticker.symbol }}</span
+                >
+              </td>
+              <td class="!text-end">
+                <span
+                  class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
+                  >{{ ticker.close }}</span
+                >
+              </td>
+              <td class="!text-end">
+                <a
+                  [routerLink]="[
+                    '/candles-chart',
+                    { symbol: ticker.symbol, interval: candleInterval() }
+                  ]"
+                >
+                  <span
+                    [ngClass]="{
+                      'text-success': ticker.percentage > 0,
+                      'text-danger': ticker.percentage < 0
+                    }"
+                    >{{ ticker.percentage | number : "1.0-2" }}% @if
+                    (ticker.percentage > 0) {
+                    <i class="ti ti-arrow-big-up-lines ms-1"></i>
+                    } @else {
+                    <i class="ti ti-arrow-big-down-lines ms-1"></i>
+                    }
+                  </span>
+                </a>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
       </div>
     </div>
-
-    <table
-      class="table table-hover whitespace-nowrap min-w-full table-bordered"
-    >
-      <thead>
-        <tr>
-          <th scope="col" class="text-start">Symbol</th>
-          <th scope="col" class="text-start">Price</th>
-          <th scope="col" class="text-start">% Change</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (ticker of filteredTickers(); track $index) {
-        <tr
-          class="border border-inherit border-solid hover:bg-gray-100 dark:border-defaultborder/10 dark:hover:bg-light"
-        >
-          <td>
-            <span
-              class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
-              >{{ ticker.symbol }}</span
-            >
-          </td>
-          <td class="!text-end">
-            <span
-              class="block font-normal text-[#8c9097] dark:text-white/50 mb-0"
-              >{{ ticker.close }}</span
-            >
-          </td>
-          <td class="!text-end">
-            <a
-              [routerLink]="[
-                '/candles-chart',
-                { symbol: ticker.symbol, interval: candleInterval() }
-              ]"
-            >
-              <span
-                [ngClass]="{
-                  'text-success': ticker.percentage > 0,
-                  'text-danger': ticker.percentage < 0
-                }"
-                >{{ ticker.percentage | number : "1.0-2" }}% @if
-                (ticker.percentage > 0) {
-                <i class="ti ti-arrow-big-up-lines ms-1"></i>
-                } @else {
-                <i class="ti ti-arrow-big-down-lines ms-1"></i>
-                }
-              </span>
-            </a>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
   </div>
 </div>

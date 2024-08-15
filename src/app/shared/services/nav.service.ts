@@ -90,15 +90,65 @@ export class NavService implements OnDestroy {
   MENUITEMS: Menu[] = [
     {
       icon: 'bot',
-      path: 'bot',
-      title: 'Bot',
-      type: 'link',
+      title: 'OB Analysis',
+      type: 'sub',
+      children: [
+        {
+          icon: 'bot',
+          path: 'order-book-analysis/operate-simulation',
+          title: 'Operate Simulation',
+          type: 'link',
+        },
+        {
+          icon: 'bot',
+          path: 'order-book-analysis/operate',
+          title: 'Operate',
+          type: 'link',
+        },
+        {
+          icon: 'bot',
+          path: 'order-book-analysis/positions',
+          title: 'Positions',
+          type: 'link',
+        },
+      ],
     },
     {
-      icon: 'coin',
-      path: 'markets',
-      title: 'Markets',
-      type: 'link',
+      icon: 'bot',
+      title: 'Candles Performance',
+      type: 'sub',
+      children: [
+        {
+          icon: 'bot',
+          path: 'bot',
+          title: 'Bot',
+          type: 'link',
+        },
+        {
+          icon: 'coin',
+          path: 'markets',
+          title: 'Markets',
+          type: 'link',
+        },
+        {
+          icon: 'detail',
+          path: 'positions',
+          title: 'Positions',
+          type: 'link',
+        },
+        {
+          icon: 'cog',
+          path: 'bot-settings',
+          title: 'Bot Settings',
+          type: 'link',
+        },
+        {
+          icon: 'cog',
+          path: 'strategy-settings',
+          title: 'Strategy Settings',
+          type: 'link',
+        },
+      ]
     },
     {
       icon: 'bar-chart-square',
@@ -107,27 +157,9 @@ export class NavService implements OnDestroy {
       type: 'link',
     },
     {
-      icon: 'detail',
-      path: 'positions',
-      title: 'Positions',
-      type: 'link',
-    },
-    {
       icon: 'wallet',
       path: 'balance',
       title: 'Balance',
-      type: 'link',
-    },
-    {
-      icon: 'cog',
-      path: 'bot-settings',
-      title: 'Bot Settings',
-      type: 'link',
-    },
-    {
-      icon: 'cog',
-      path: 'strategy-settings',
-      title: 'Strategy Settings',
       type: 'link',
     },
   ];

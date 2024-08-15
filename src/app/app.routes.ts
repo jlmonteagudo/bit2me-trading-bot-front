@@ -3,7 +3,7 @@ import { ContentLayoutComponent } from './shared/layouts/content-layout/content-
 import { authGuard } from './shared/guards/auth.guard';
 
 export const appRoutes: Route[] = [
-  { path: '', redirectTo: 'bot', pathMatch: 'full' },
+  { path: '', redirectTo: 'order-book-analysis', pathMatch: 'full' },
   {
     path: '',
     component: ContentLayoutComponent,
@@ -67,6 +67,26 @@ export const appRoutes: Route[] = [
                 (m) => m.PositionsComponent
               ),
           },
+          {
+            path: 'order-book-analysis',
+            children: [
+              { path: '', redirectTo: 'operate-simulation', pathMatch: 'full' },
+              {
+                path: 'operate',
+                loadComponent: () =>
+                  import('./order-book-analysis/pages/order-book-analysis/order-book-analysis.component').then(
+                    (m) => m.OrderBookAnalysisComponent
+                  ),
+              },
+              {
+                path: 'operate-simulation',
+                loadComponent: () =>
+                  import('./order-book-analysis/pages/operate-simulation/operate-simulation.component').then(
+                    (m) => m.OperateSimulationComponent
+                  ),
+              },
+            ]
+          }
         ],
       },
     ],
