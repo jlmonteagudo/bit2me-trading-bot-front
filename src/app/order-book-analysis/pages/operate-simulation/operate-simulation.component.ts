@@ -8,11 +8,12 @@ import { OrderBookService } from '../../services/order-book.service';
 import { ToastrService } from 'ngx-toastr';
 import { ListPositionsComponent } from '../../components/list-positions/list-positions.component';
 import { SettingsSimulationService } from '../../services/settings-simulation.service';
+import { TradingRequirementsAlertComponent } from '../../components/trading-requirements-alert/trading-requirements-alert.component';
 
 @Component({
   selector: 'app-operate-simulation',
   standalone: true,
-  imports: [CommonModule, OpenPositionComponent, CurrentPositionComponent, ListPositionsComponent],
+  imports: [CommonModule, OpenPositionComponent, CurrentPositionComponent, ListPositionsComponent, TradingRequirementsAlertComponent],
   templateUrl: './operate-simulation.component.html',
   styleUrl: './operate-simulation.component.scss'
 })
