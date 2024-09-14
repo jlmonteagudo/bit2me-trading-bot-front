@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
-import { ContentLayoutComponent } from './shared/layouts/content-layout/content-layout.component';
-import { authGuard } from './shared/guards/auth.guard';
+import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 export const appRoutes: Route[] = [
-  { path: '', redirectTo: 'order-book-analysis', pathMatch: 'full' },
+  { path: '', redirectTo: 'operate-simulation', pathMatch: 'full' },
   {
     path: '',
     component: ContentLayoutComponent,
@@ -12,81 +12,12 @@ export const appRoutes: Route[] = [
         path: '',
         children: [
           {
-            path: 'bot',
+            path: 'operate-simulation',
             loadComponent: () =>
-              import('./pages/dashboard/dashboard.component').then(
-                (m) => m.DashboardComponent
+              import('./positions/pages/operate-simulation/operate-simulation.component').then(
+                (m) => m.OperateSimulationComponent
               ),
           },
-          {
-            path: 'markets',
-            loadComponent: () =>
-              import('./pages/markets/markets.component').then(
-                (m) => m.MarketsComponent
-              ),
-          },
-          {
-            path: 'bot-settings',
-            loadComponent: () =>
-              import('./pages/bot-settings/bot-settings.component').then(
-                (m) => m.BotSettingsComponent
-              ),
-          },
-          {
-            path: 'strategy-settings',
-            loadComponent: () =>
-              import(
-                './pages/strategy-settings/strategy-settings.component'
-              ).then((m) => m.StrategySettingsComponent),
-          },
-          {
-            path: 'candles-chart',
-            loadComponent: () =>
-              import('./pages/candles-chart/candles-chart.component').then(
-                (m) => m.CandlesChartComponent
-              ),
-          },
-          {
-            path: 'balance',
-            loadComponent: () =>
-              import('./pages/balance/balance.component').then(
-                (m) => m.BalanceComponent
-              ),
-          },
-          {
-            path: 'tickers',
-            loadComponent: () =>
-              import('./pages/tickers/tickers.component').then(
-                (m) => m.TickersComponent
-              ),
-          },
-          {
-            path: 'positions',
-            loadComponent: () =>
-              import('./pages/positions/positions.component').then(
-                (m) => m.PositionsComponent
-              ),
-          },
-          {
-            path: 'order-book-analysis',
-            children: [
-              { path: '', redirectTo: 'operate-simulation', pathMatch: 'full' },
-              {
-                path: 'operate',
-                loadComponent: () =>
-                  import('./order-book-analysis/pages/order-book-analysis/order-book-analysis.component').then(
-                    (m) => m.OrderBookAnalysisComponent
-                  ),
-              },
-              {
-                path: 'operate-simulation',
-                loadComponent: () =>
-                  import('./order-book-analysis/pages/operate-simulation/operate-simulation.component').then(
-                    (m) => m.OperateSimulationComponent
-                  ),
-              },
-            ]
-          }
         ],
       },
     ],
@@ -95,6 +26,6 @@ export const appRoutes: Route[] = [
   {
     path: 'auth/login',
     loadComponent: () =>
-      import('./pages/login/login.component').then((m) => m.LoginComponent),
+      import('./auth/login/login.component').then((m) => m.LoginComponent),
   },
 ];
