@@ -6,7 +6,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 @Injectable({ providedIn: 'root' })
 export class SettingsSimulationService {
   readonly #database = inject(AngularFireDatabase);
-  readonly #url = '/strategies/manual-order-book-analysis/settings-simulation';
+  readonly #url = '/manual-trading/simulation/settings';
 
   #feePercentage$: Observable<number> = this.#database
     .object<any>(this.#url)

@@ -5,8 +5,8 @@ import { webSocket } from 'rxjs/webSocket';
 
 @Injectable({ providedIn: 'root' })
 export class OrderBookService {
-  // readonly #WEBSOCKET_URL = 'ws://localhost:8080';
-  readonly #WEBSOCKET_URL = 'wss://orca-app-jkafl.ondigitalocean.app';
+  readonly #WEBSOCKET_URL = 'ws://localhost:8080';
+  // readonly #WEBSOCKET_URL = 'wss://orca-app-jkafl.ondigitalocean.app';
   readonly #websocketSubject = webSocket<string>(this.#WEBSOCKET_URL);
 
   readonly #websocket$ = this.#websocketSubject.asObservable().pipe(
