@@ -4,59 +4,78 @@
   </div>
   <div class="box-body !p-0">
     <ul class="border-0">
-      <li
-        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
-      >
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Symbol</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().symbol }}</span>
         </div>
       </li>
 
-      <li
-        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
-      >
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Base amount</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().baseAmount }} BTC</span>
         </div>
       </li>
 
-      <li
-        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
-      >
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Entry quote amount</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().entryQuoteAmount | number }} EUR</span>
         </div>
       </li>
 
-      <li
-        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
-      >
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Exit quote amount</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ sellQuote() | number }} EUR</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ exitQuoteAmount() | number }} EUR</span>
         </div>
       </li>
 
-      <li
-        class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10"
-      >
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">Stop loss</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().stopLossCost | number }} EUR</span>
+        </div>
+      </li>
+
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">Take profit</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().takeProfitCost | number }} EUR</span>
+        </div>
+      </li>
+
+
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">Stop loss distance</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ stopLossDistance() | number
+            }}
+            EUR</span>
+        </div>
+      </li>
+
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">Next trailing distance</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ nextTrailingDistance() | number }}
+            EUR</span>
+        </div>
+      </li>
+
+
+
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Profit</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ profit() | number }} EUR</span>
         </div>
       </li>
-
     </ul>
 
     <div class="m-4">
-      <button
-        class="ti-btn ti-btn-primary-full !mb-0"
-        type="submit"
-        (click)="closePosition.emit(currentPosition().id)"
-      >
+      <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="closePosition.emit(currentPosition().id)">
         Close position
       </button>
     </div>

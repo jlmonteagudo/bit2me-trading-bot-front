@@ -10,4 +10,6 @@ export interface Position {
   exitAt: Date;
   entryAveragePrice: number;
   exitAveragePrice: number;
+  stopLossCost: number;
+  takeProfitCost: number;
 }

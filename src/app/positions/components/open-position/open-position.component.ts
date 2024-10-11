@@ -19,7 +19,7 @@ export class OpenPositionComponent {
 
   positionForm = this.#formBuilder.group({
     symbol: ['BTC/EUR', [Validators.required]],
-    quoteOrderAmount: [60000, [Validators.required, Validators.pattern(/^\d+$/)]],
+    quoteOrderAmount: [50000, [Validators.required, Validators.pattern(/^\d+$/)]],
   });
 
   async savePosition() {

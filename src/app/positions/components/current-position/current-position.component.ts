@@ -11,25 +11,23 @@ import { OrderBookService } from '../../../order-book/services/order-book.servic
   styleUrl: './current-position.component.scss'
 })
 export class CurrentPositionComponent {
-  readonly #orderBookService = inject(OrderBookService);
-
   currentPosition = input.required<Position>();
-  orderBook = input.required();
+  exitQuoteAmount = input.required<number>();
   feePercentage = input.required<number>();
   closePosition = output<string>();
 
-  sellQuote = computed(() => {
-    if (!this.currentPosition() || !this.orderBook()) return 0;
-
-    const feePercentage = this.feePercentage();
-    const sellQuote = this.#orderBookService.getSellQuote(this.currentPosition()!.baseAmount);
-    const feeAmount = sellQuote * feePercentage / 100;
-
-    return sellQuote - feeAmount;
-  });
-
   profit = computed(() => {
     if (!this.currentPosition()) return 0;
-    return this.sellQuote() - this.currentPosition()!.entryQuoteAmount;
+    return this.exitQuoteAmount() - this.currentPosition()!.entryQuoteAmount;
+  });
+
+  stopLossDistance = computed(() => {
+    if (!this.currentPosition()) return 0;
+    return this.exitQuoteAmount() - this.currentPosition()!.stopLossCost;
+  });
+
+  nextTrailingDistance = computed(() => {
+    if (!this.currentPosition()) return 0;
+    return this.currentPosition()!.takeProfitCost - this.exitQuoteAmount();
   });
 }

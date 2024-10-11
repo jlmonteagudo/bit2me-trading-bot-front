@@ -24,7 +24,7 @@ export class OperateSimulationComponent {
   readonly #toastrService = inject(ToastrService);
 
   currentPosition = this.#positionSimulationService.currentPosition;
-  orderBook = this.#orderBookService.orderBook;
+  exitQuoteAmount = this.#orderBookService.exitQuoteAmount;
   positions = this.#positionSimulationService.lastPositions;
   feePercentage = this.#settingsSimulationService.feePercentage;
 
