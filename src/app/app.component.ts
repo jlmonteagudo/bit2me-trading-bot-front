@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { PushNotificationService } from './shared/services/push-notification.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -8,4 +9,11 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  pushNotificationService = inject(PushNotificationService);
+
+  constructor() {
+    this.pushNotificationService.requestPermission();
+    this.pushNotificationService.listen();
+  }
+}

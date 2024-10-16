@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { provideToastr } from 'ngx-toastr';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireMessagingModule,
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(environment.firebase)),
       provideDatabase(() => getDatabase()),
