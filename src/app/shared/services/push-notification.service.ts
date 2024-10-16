@@ -32,7 +32,10 @@ export class PushNotificationService {
 
   triggerVibration() {
     if (navigator.vibrate) {
-      navigator.vibrate(200);
+      navigator.vibrate(1000);
+      // navigator.vibrate([
+      //   100, 30, 100, 30, 100, 200, 200, 30, 200, 30, 200, 200, 100, 30, 100, 30, 100,
+      // ]);
     }
   }
 
