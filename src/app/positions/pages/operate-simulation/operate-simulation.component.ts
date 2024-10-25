@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ListPositionsComponent } from '../../components/list-positions/list-positions.component';
 import { SettingsSimulationService } from '../../../settings/services/settings-simulation.service';
 import { TradingRequirementsAlertComponent } from '../../components/trading-requirements-alert/trading-requirements-alert.component';
+import { ServerTimeService } from '../../../shared/services/server-time.service';
 
 @Component({
   selector: 'app-operate-simulation',
@@ -21,12 +22,14 @@ export class OperateSimulationComponent {
   readonly #settingsSimulationService = inject(SettingsSimulationService);
   readonly #positionSimulationService = inject(PositionSimulationService);
   readonly #orderBookService = inject(OrderBookService);
+  readonly #serverTimeService = inject(ServerTimeService);
   readonly #toastrService = inject(ToastrService);
 
   currentPosition = this.#positionSimulationService.currentPosition;
   exitQuoteAmount = this.#orderBookService.exitQuoteAmount;
   positions = this.#positionSimulationService.lastPositions;
   feePercentage = this.#settingsSimulationService.feePercentage;
+  serverTime = this.#serverTimeService.serverTime;
 
   onNewOpenPosition(position: OpenPosition) {
     try {

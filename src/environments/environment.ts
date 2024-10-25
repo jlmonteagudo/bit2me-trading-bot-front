@@ -16,6 +16,10 @@ export const environment = {
   apiDomain: (resource: string) =>
     `https://${resource}-iivwz62j7q-uc.a.run.app`,
   defaultQuoteCurrency: 'USDT',
+  urls: {
+    api: '',
+    websocket: 'ws://localhost:8080'
+  }
 };
 
 /*

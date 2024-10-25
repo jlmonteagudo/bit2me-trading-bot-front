@@ -14,35 +14,48 @@
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Base amount</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().baseAmount }} BTC</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().baseAmount }} {{ currentPosition().symbol
+            | symbolCurrency:
+            'base' }}</span>
         </div>
       </li>
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Entry quote amount</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().entryQuoteAmount | number }} EUR</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().entryQuoteAmount | number }} {{
+            currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Exit quote amount</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ exitQuoteAmount() | number }} EUR</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ exitQuoteAmount() | number }} {{ currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Stop loss</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().stopLossCost | number }} EUR</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().stopLossCost | number }} {{
+            currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Take profit</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().takeProfitCost | number }} EUR</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().takeProfitCost | number }} {{
+            currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
 
@@ -52,7 +65,9 @@
           <span class="tx-14 mb-0 font-normal text-dark">Stop loss distance</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ stopLossDistance() | number
             }}
-            EUR</span>
+            {{ currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
 
@@ -60,7 +75,9 @@
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Next trailing distance</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ nextTrailingDistance() | number }}
-            EUR</span>
+            {{ currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
 
@@ -69,7 +86,9 @@
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Profit</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ profit() | number }} EUR</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ profit() | number }} {{ currentPosition().symbol
+            | symbolCurrency:
+            'quote' }}</span>
         </div>
       </li>
     </ul>
