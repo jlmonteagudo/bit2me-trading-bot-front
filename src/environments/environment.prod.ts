@@ -16,6 +16,8 @@ export const environment = {
   urls: {
     api: '',
     websocket: 'wss://orca-app-jkafl.ondigitalocean.app',
-    // websocket: 'ws://localhost:8080'
+    // websocket: 'ws://localhost:8080',
+    bit2me: 'https://pro.bit2me.com/exchange',
+    bit2meMobile: 'https://pro-mobile.bit2me.com/charts',
   }
 };

@@ -2,6 +2,8 @@ import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Ticker } from '../../interfaces/ticker.interface';
 import { Router } from '@angular/router';
+import { DeviceTypeService } from '../../../shared/services/device-type.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-list-most-performant-markets',
@@ -15,8 +17,11 @@ export class ListMostPerformantMarketsComponent {
   markets = input.required<Ticker[]>();
 
   openChart(symbol: string) {
+    debugger;
+
     const urlSymbol = symbol.replace('/', '-');
-    window.open(`https://pro.bit2me.com/exchange/${urlSymbol}`, '_blank');
+    const baseUrl = DeviceTypeService.getDeviceType() === 'desktop' ? environment.urls.bit2me : environment.urls.bit2meMobile;
+    window.open(`${baseUrl}/${urlSymbol}`, '_blank');
   }
 
   openOperate(symbol: string) {

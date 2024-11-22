@@ -2,6 +2,8 @@ import { Component, computed, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Position } from '../../interfaces/position.interface';
 import { SymbolCurrencyPipe } from '../../../shared/pipes/symbol-currency.pipe';
+import { environment } from '../../../../environments/environment';
+import { DeviceTypeService } from '../../../shared/services/device-type.service';
 
 @Component({
   selector: 'app-current-position',
@@ -38,6 +40,7 @@ export class CurrentPositionComponent {
 
   openChart(symbol: string) {
     const urlSymbol = symbol.replace('/', '-');
-    window.open(`https://pro.bit2me.com/exchange/${urlSymbol}`, '_blank');
+    const baseUrl = DeviceTypeService.getDeviceType() === 'desktop' ? environment.urls.bit2me : environment.urls.bit2meMobile;
+    window.open(`${baseUrl}/${urlSymbol}`, '_blank');
   }
 }
