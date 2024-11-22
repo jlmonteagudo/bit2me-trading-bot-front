@@ -8,7 +8,7 @@ import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 export class PushNotificationService {
   readonly #messaging = inject(AngularFireMessaging);
   readonly #database = inject(AngularFireDatabase);
-  readonly #tokenPath = '/manual-trading/simulation/settings/notifications/token';
+  readonly #tokenPath = '/manual-trading/settings/notifications/token';
 
   requestPermission() {
     this.#messaging.requestToken.subscribe(

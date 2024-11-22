@@ -25,6 +25,6 @@ export class ListMostPerformantMarketsComponent {
   }
 
   openOperate(symbol: string) {
-    this.router.navigate(['/operate-simulation'], { queryParams: { symbol } });
+    this.router.navigate(['/operate'], { queryParams: { symbol } });
   }
 }

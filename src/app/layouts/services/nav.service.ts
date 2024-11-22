@@ -96,8 +96,8 @@ export class NavService implements OnDestroy {
     },
     {
       icon: 'bot',
-      path: 'operate-simulation',
-      title: 'Operate Simulation',
+      path: 'operate',
+      title: 'Operate',
       type: 'link',
     },
   ];

@@ -1,16 +1,17 @@
 import { Injectable, inject } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable, filter, map } from 'rxjs';
+import { Observable, filter, map, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Position } from '../interfaces/position.interface';
 
 @Injectable({ providedIn: 'root' })
 export class PositionService {
   readonly #database = inject(AngularFireDatabase);
-  readonly #url = '/strategies/manual-order-book-analysis';
+  readonly #positionsURL = '/manual-trading/positions';
+  readonly #commandsURL = '/manual-trading/commands';
 
   #currentPosition$: Observable<Position> = this.#database
-    .list<Position>(`${this.#url}/positions`, (ref) =>
+    .list<Position>(this.#positionsURL, (ref) =>
       ref.orderByChild('status').equalTo('open')
     )
     .snapshotChanges()
@@ -24,21 +25,20 @@ export class PositionService {
         })
       }),
       map((positions) => positions[0]),
-      filter((position) => !!position),
     );
 
   currentPosition = toSignal(this.#currentPosition$);
 
   openNewPosition(symbol: string, quoteOrderAmount: number) {
-    this.#database.object(`${this.#url}/commands/createPosition`).set({ symbol, quoteOrderAmount, simulation: false });
+    this.#database.object(`${this.#commandsURL}/createPosition`).set({ symbol, quoteOrderAmount });
   }
 
   closePosition(id: string) {
-    this.#database.object(`${this.#url}/commands/closePosition`).set({ id, simulation: false });
+    this.#database.object(`${this.#commandsURL}/closePosition`).set({ id });
   }
 
   #lastPositions$: Observable<Position[]> = this.#database
-    .list<Position>(`${this.#url}/positions`, (ref) => ref.orderByKey().limitToLast(20))
+    .list<Position>(this.#positionsURL, (ref) => ref.orderByKey().limitToLast(20))
     .valueChanges()
     .pipe(
       map((positions) => positions.reverse()),
@@ -47,7 +47,7 @@ export class PositionService {
   lastPositions = toSignal(this.#lastPositions$);
 
   #positions$: Observable<Position[]> = this.#database
-    .list<Position>(`${this.#url}/positions`, (ref) => ref.orderByKey().limitToLast(100))
+    .list<Position>(this.#positionsURL, (ref) => ref.orderByKey().limitToLast(100))
     .valueChanges()
     .pipe(
       map((positions) => positions.reverse()),

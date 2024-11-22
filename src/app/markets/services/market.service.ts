@@ -7,7 +7,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 @Injectable({ providedIn: 'root' })
 export class MarketService {
   readonly #database = inject(AngularFireDatabase);
-  readonly #performantMarketsURL = '/manual-trading/simulation/performant-markets';
+  readonly #performantMarketsURL = '/manual-trading/performant-markets';
 
   #performantMarkets$: Observable<Ticker[] | null> = this.#database.object<Ticker[]>(this.#performantMarketsURL).valueChanges();
 

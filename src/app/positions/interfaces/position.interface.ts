@@ -5,6 +5,7 @@ export interface Position {
   entryQuoteAmount: number;
   exitQuoteAmount: number;
   profit: number;
+  profitPercentage: number;
   status: string;
   entryAt: Date;
   exitAt: Date;

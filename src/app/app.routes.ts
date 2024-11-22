@@ -12,10 +12,10 @@ export const appRoutes: Route[] = [
         path: '',
         children: [
           {
-            path: 'operate-simulation',
+            path: 'operate',
             loadComponent: () =>
-              import('./positions/pages/operate-simulation/operate-simulation.component').then(
-                (m) => m.OperateSimulationComponent
+              import('./positions/pages/operate/operate.component').then(
+                (m) => m.OperateComponent
               ),
           },
           {

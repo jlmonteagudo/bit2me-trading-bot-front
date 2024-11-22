@@ -4,9 +4,9 @@ import { Observable, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({ providedIn: 'root' })
-export class SettingsSimulationService {
+export class SettingsService {
   readonly #database = inject(AngularFireDatabase);
-  readonly #url = '/manual-trading/simulation/settings';
+  readonly #url = '/manual-trading/settings';
 
   #feePercentage$: Observable<number> = this.#database
     .object<any>(this.#url)
