@@ -1,0 +1,38 @@
+<div class="box">
+  <div class="box-header md:justify-between flex-wrap">
+    <div class="box-title">Most Performant Markets</div>
+  </div>
+  <div class="box-body !p-0">
+    <ul class="border-0">
+
+      @for (market of markets(); track $index) {
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+
+            <p class="mb-2 text-[#8c9097] dark:text-white/50">
+              <span>{{ market.symbol }}</span>
+            </p>
+            <p class="mb-2 text-[#8c9097] dark:text-white/50">
+              <span class="font-semibold text-defaulttextcolor dark:text-defaulttextcolor/70">{{ market.percentage |
+                number: '1.2-2' }}%</span>
+            </p>
+
+          </div>
+
+          <div class="flex items-center text-end gap-2">
+            <button type="button" class="ti-btn ti-btn-primary-full !py-1 !px-2 ti-btn-wave"
+              (click)="openChart(market.symbol)">Chart</button>
+            <button type="button" class="ti-btn ti-btn-primary-full !py-1 !px-2 ti-btn-wave"
+              (click)="openOperate(market.symbol)">Operate</button>
+          </div>
+
+        </div>
+
+      </li>
+      }
+
+    </ul>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, effect, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -17,9 +17,16 @@ export class OpenPositionComponent {
 
   newOpenPosition = output<OpenPosition>();
 
+  symbol = input();
+
+  #symbolEffect = effect(() => {
+    const symbol = this.symbol() as string;
+    this.positionForm.patchValue({ symbol });
+  });
+
   positionForm = this.#formBuilder.group({
-    symbol: ['BTC/EUR', [Validators.required]],
-    quoteOrderAmount: [50000, [Validators.required, Validators.pattern(/^\d+$/)]],
+    symbol: ['', [Validators.required]],
+    quoteOrderAmount: [0, [Validators.required, Validators.pattern(/^\d+$/), Validators.min(10)]],
   });
 
   async savePosition() {

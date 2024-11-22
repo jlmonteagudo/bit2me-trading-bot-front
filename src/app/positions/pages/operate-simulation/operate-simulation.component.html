@@ -1,10 +1,7 @@
-<div class="mt-2">
-  Server Time: {{ serverTime() | date: 'dd/MM/yyyy hh:mm:ss' }}
-</div>
 <div class="grid grid-cols-12 gap-x-6 mt-2">
   <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
     <div class="mb-4"><app-trading-requirements-alert /></div>
-    <app-open-position (newOpenPosition)="onNewOpenPosition($event)" *ngIf="!currentPosition()" />
+    <app-open-position [symbol]="symbol" (newOpenPosition)="onNewOpenPosition($event)" *ngIf="!currentPosition()" />
     <app-current-position [currentPosition]="currentPosition()!" [exitQuoteAmount]="exitQuoteAmount()"
       [feePercentage]="feePercentage() || 0" (closePosition)="onClosePosition($event)" *ngIf="currentPosition()" />
 

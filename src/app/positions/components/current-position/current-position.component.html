@@ -49,7 +49,7 @@
         </div>
       </li>
 
-      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+      <!-- <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Take profit</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().takeProfitCost | number }} {{
@@ -79,9 +79,7 @@
             | symbolCurrency:
             'quote' }}</span>
         </div>
-      </li>
-
-
+      </li> -->
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
@@ -91,12 +89,24 @@
             'quote' }}</span>
         </div>
       </li>
+
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+        <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">% Profit</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ profitPercentage() | number: '1.2-2' }}%</span>
+        </div>
+      </li>
+
     </ul>
 
-    <div class="m-4">
+    <div class="flex items-center text-end gap-2 m-4">
       <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="closePosition.emit(currentPosition().id)">
         Close position
       </button>
+
+      <button type="button" class="ti-btn ti-btn-primary-full !mb-0"
+        (click)="openChart(currentPosition().symbol)">Chart</button>
+
     </div>
   </div>
 </div>

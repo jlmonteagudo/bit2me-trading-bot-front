@@ -7,11 +7,11 @@ import { Position } from '../interfaces/position.interface';
 @Injectable({ providedIn: 'root' })
 export class PositionSimulationService {
   readonly #database = inject(AngularFireDatabase);
-  readonly #positions_url = '/manual-trading/simulation/positions';
-  readonly #commands_url = '/manual-trading/commands';
+  readonly #positionsURL = '/manual-trading/simulation/positions';
+  readonly #commandsURL = '/manual-trading/commands';
 
   #currentPosition$: Observable<Position> = this.#database
-    .list<Position>(this.#positions_url, (ref) =>
+    .list<Position>(this.#positionsURL, (ref) =>
       ref.orderByChild('status').equalTo('open')
     )
     .snapshotChanges()
@@ -30,15 +30,15 @@ export class PositionSimulationService {
   currentPosition = toSignal(this.#currentPosition$);
 
   openNewPosition(symbol: string, quoteOrderAmount: number) {
-    this.#database.object(`${this.#commands_url}/createPosition`).set({ symbol, quoteOrderAmount, simulation: true });
+    this.#database.object(`${this.#commandsURL}/createPosition`).set({ symbol, quoteOrderAmount, simulation: true });
   }
 
   closePosition(id: string) {
-    this.#database.object(`${this.#commands_url}/closePosition`).set({ id, simulation: true });
+    this.#database.object(`${this.#commandsURL}/closePosition`).set({ id, simulation: true });
   }
 
   #lastPositions$: Observable<Position[]> = this.#database
-    .list<Position>(this.#positions_url, (ref) => ref.orderByKey().limitToLast(20))
+    .list<Position>(this.#positionsURL, (ref) => ref.orderByKey().limitToLast(20))
     .valueChanges()
     .pipe(
       map((positions) => positions.reverse()),
@@ -47,7 +47,7 @@ export class PositionSimulationService {
   lastPositions = toSignal(this.#lastPositions$);
 
   #positions$: Observable<Position[]> = this.#database
-    .list<Position>(this.#positions_url, (ref) => ref.orderByKey().limitToLast(100))
+    .list<Position>(this.#positionsURL, (ref) => ref.orderByKey().limitToLast(100))
     .valueChanges()
     .pipe(
       map((positions) => positions.reverse()),

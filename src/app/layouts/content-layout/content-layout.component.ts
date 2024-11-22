@@ -1,10 +1,12 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TabToTopComponent } from './components/tab-to-top/tab-to-top.component';
 import { Menu, NavService } from '../services/nav.service';
+import { ServerTimeService } from '../../shared/services/server-time.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-content-layout',
@@ -15,11 +17,15 @@ import { Menu, NavService } from '../services/nav.service';
     SidebarComponent,
     FooterComponent,
     TabToTopComponent,
+    DatePipe
   ],
   templateUrl: './content-layout.component.html',
   styleUrl: './content-layout.component.scss',
 })
 export class ContentLayoutComponent {
+  readonly #serverTimeService = inject(ServerTimeService);
+
+  public serverTime = this.#serverTimeService.serverTime;
   public menuItems!: Menu[];
 
   constructor(public navServices: NavService, private elementRef: ElementRef) {

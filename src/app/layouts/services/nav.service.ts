@@ -89,8 +89,14 @@ export class NavService implements OnDestroy {
 
   MENUITEMS: Menu[] = [
     {
+      icon: 'upvote',
+      path: 'performant-markets',
+      title: 'Performant Markets',
+      type: 'link',
+    },
+    {
       icon: 'bot',
-      path: 'order-book-analysis/operate-simulation',
+      path: 'operate-simulation',
       title: 'Operate Simulation',
       type: 'link',
     },

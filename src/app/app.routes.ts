@@ -3,7 +3,7 @@ import { ContentLayoutComponent } from './layouts/content-layout/content-layout.
 import { authGuard } from './auth/guards/auth.guard';
 
 export const appRoutes: Route[] = [
-  { path: '', redirectTo: 'operate-simulation', pathMatch: 'full' },
+  { path: '', redirectTo: 'performant-markets', pathMatch: 'full' },
   {
     path: '',
     component: ContentLayoutComponent,
@@ -18,6 +18,13 @@ export const appRoutes: Route[] = [
                 (m) => m.OperateSimulationComponent
               ),
           },
+          {
+            path: 'performant-markets',
+            loadComponent: () =>
+              import('./markets/pages/most-performant-markets/most-performant-markets.component').then(
+                (m) => m.MostPerformantMarketsComponent
+              ),
+          }
         ],
       },
     ],

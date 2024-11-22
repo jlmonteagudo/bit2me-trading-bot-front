@@ -21,6 +21,11 @@ export class CurrentPositionComponent {
     return this.exitQuoteAmount() - this.currentPosition()!.entryQuoteAmount;
   });
 
+  profitPercentage = computed(() => {
+    if (!this.currentPosition()) return 0;
+    return (this.profit() / this.currentPosition()!.entryQuoteAmount) * 100;
+  });
+
   stopLossDistance = computed(() => {
     if (!this.currentPosition()) return 0;
     return this.exitQuoteAmount() - this.currentPosition()!.stopLossCost;
@@ -30,4 +35,9 @@ export class CurrentPositionComponent {
     if (!this.currentPosition()) return 0;
     return this.currentPosition()!.takeProfitCost - this.exitQuoteAmount();
   });
+
+  openChart(symbol: string) {
+    const urlSymbol = symbol.replace('/', '-');
+    window.open(`https://pro.bit2me.com/exchange/${urlSymbol}`, '_blank');
+  }
 }
