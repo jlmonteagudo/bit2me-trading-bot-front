@@ -27,7 +27,7 @@ export class OperateComponent {
 
 
   currentPosition = this.#positionService.currentPosition;
-  exitQuoteAmount = this.#orderBookService.exitQuoteAmount;
+  exitCost = this.#orderBookService.exitCost;
   positions = this.#positionService.lastPositions;
   feePercentage = this.#settingsService.feePercentage;
   symbol = this.#route.snapshot.queryParams['symbol'];

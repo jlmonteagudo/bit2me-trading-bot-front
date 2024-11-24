@@ -17,8 +17,6 @@ export class ListMostPerformantMarketsComponent {
   markets = input.required<Ticker[]>();
 
   openChart(symbol: string) {
-    debugger;
-
     const urlSymbol = symbol.replace('/', '-');
     const baseUrl = DeviceTypeService.getDeviceType() === 'desktop' ? environment.urls.bit2me : environment.urls.bit2meMobile;
     window.open(`${baseUrl}/${urlSymbol}`, '_blank');

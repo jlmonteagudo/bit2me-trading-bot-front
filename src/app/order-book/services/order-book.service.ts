@@ -9,10 +9,10 @@ export class OrderBookService {
   readonly #WEBSOCKET_URL = environment.urls.websocket;
   readonly #websocketSubject = webSocket<string>(this.#WEBSOCKET_URL);
 
-  readonly #exitQuoteAmount$ = this.#websocketSubject.asObservable().pipe(
-    filter((message: any) => message.event === 'exit-quote-amount'),
+  readonly #exitCost$ = this.#websocketSubject.asObservable().pipe(
+    filter((message: any) => message.event === 'exit-cost'),
     map((message: any) => message.data)
   );
 
-  exitQuoteAmount = toSignal(this.#exitQuoteAmount$);
+  exitCost = toSignal(this.#exitCost$);
 }

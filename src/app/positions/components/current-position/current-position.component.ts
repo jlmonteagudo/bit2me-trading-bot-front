@@ -14,28 +14,28 @@ import { DeviceTypeService } from '../../../shared/services/device-type.service'
 })
 export class CurrentPositionComponent {
   currentPosition = input.required<Position>();
-  exitQuoteAmount = input.required<number>();
+  exitCost = input.required<number>();
   feePercentage = input.required<number>();
   closePosition = output<string>();
 
   profit = computed(() => {
     if (!this.currentPosition()) return 0;
-    return this.exitQuoteAmount() - this.currentPosition()!.entryQuoteAmount;
+    return this.exitCost() - this.currentPosition()!.entryCost;
   });
 
   profitPercentage = computed(() => {
     if (!this.currentPosition()) return 0;
-    return (this.profit() / this.currentPosition()!.entryQuoteAmount) * 100;
+    return (this.profit() / this.currentPosition()!.entryCost) * 100;
   });
 
   stopLossDistance = computed(() => {
     if (!this.currentPosition()) return 0;
-    return this.exitQuoteAmount() - this.currentPosition()!.stopLossCost;
+    return this.exitCost() - this.currentPosition()!.stopLossCost;
   });
 
   nextTrailingDistance = computed(() => {
     if (!this.currentPosition()) return 0;
-    return this.currentPosition()!.takeProfitCost - this.exitQuoteAmount();
+    return this.currentPosition()!.takeProfitCost - this.exitCost();
   });
 
   openChart(symbol: string) {

@@ -20,13 +20,13 @@ export class ListPositionsComponent {
 
     return this.positions()?.map(position => {
       const newPosition = { ...position };
-      const ratio = (normalizedQuoteAmount || position.entryQuoteAmount) / position.entryQuoteAmount;
+      const ratio = (normalizedQuoteAmount || position.entryCost) / position.entryCost;
 
       newPosition.baseAmount *= ratio;
-      newPosition.entryAveragePrice *= ratio;
-      newPosition.exitAveragePrice *= ratio;
-      newPosition.entryQuoteAmount *= ratio;
-      newPosition.exitQuoteAmount *= ratio;
+      newPosition.entryPrice *= ratio;
+      newPosition.exitPrice *= ratio;
+      newPosition.entryCost *= ratio;
+      newPosition.exitCost *= ratio;
       newPosition.profit *= ratio;
 
       return newPosition;

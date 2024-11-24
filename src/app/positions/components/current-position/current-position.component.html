@@ -22,8 +22,8 @@
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
-          <span class="tx-14 mb-0 font-normal text-dark">Entry quote amount</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().entryQuoteAmount | number }} {{
+          <span class="tx-14 mb-0 font-normal text-dark">Entry cost</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ currentPosition().entryCost | number }} {{
             currentPosition().symbol
             | symbolCurrency:
             'quote' }}</span>
@@ -32,8 +32,8 @@
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
-          <span class="tx-14 mb-0 font-normal text-dark">Exit quote amount</span>
-          <span class="tx-14 mb-0 font-normal text-dark">{{ exitQuoteAmount() | number }} {{ currentPosition().symbol
+          <span class="tx-14 mb-0 font-normal text-dark">Exit cost</span>
+          <span class="tx-14 mb-0 font-normal text-dark">{{ exitCost() | number }} {{ currentPosition().symbol
             | symbolCurrency:
             'quote' }}</span>
         </div>
