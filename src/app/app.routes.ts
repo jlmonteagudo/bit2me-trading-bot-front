@@ -24,6 +24,13 @@ export const appRoutes: Route[] = [
               import('./markets/pages/most-performant-markets/most-performant-markets.component').then(
                 (m) => m.MostPerformantMarketsComponent
               ),
+          },
+          {
+            path: 'balance',
+            loadComponent: () =>
+              import('./balance/pages/balance/balance.component').then(
+                (m) => m.BalanceComponent
+              ),
           }
         ],
       },
