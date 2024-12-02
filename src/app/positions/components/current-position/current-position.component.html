@@ -83,6 +83,16 @@
 
       <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
         <div class="flex w-full justify-between items-center">
+          <span class="tx-14 mb-0 font-normal text-dark">Entry price</span>
+          <span class="tx-14 mb-0 font-normal text-dark">
+            {{ currentPosition().entryPrice | number }}
+            {{ currentPosition().symbol | symbolCurrency: 'quote' }}
+          </span>
+        </div>
+      </li>
+
+      <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+        <div class="flex w-full justify-between items-center">
           <span class="tx-14 mb-0 font-normal text-dark">Profit</span>
           <span class="tx-14 mb-0 font-normal text-dark">{{ profit() | number }} {{ currentPosition().symbol
             | symbolCurrency:
