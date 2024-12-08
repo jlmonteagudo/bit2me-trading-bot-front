@@ -106,6 +106,12 @@ export class NavService implements OnDestroy {
       title: 'Balance',
       type: 'link',
     },
+    {
+      icon: 'cog',
+      path: 'settings',
+      title: 'Settings',
+      type: 'link',
+    },
   ];
 
   items = new BehaviorSubject<Menu[]>(this.MENUITEMS);

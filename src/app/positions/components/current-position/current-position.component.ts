@@ -15,7 +15,6 @@ import { DeviceTypeService } from '../../../shared/services/device-type.service'
 export class CurrentPositionComponent {
   currentPosition = input.required<Position>();
   exitCost = input.required<number>();
-  feePercentage = input.required<number>();
   closePosition = output<string>();
 
   profit = computed(() => {

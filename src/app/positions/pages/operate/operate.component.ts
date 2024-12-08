@@ -8,7 +8,6 @@ import { OrderBookService } from '../../../order-book/services/order-book.servic
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { ListPositionsComponent } from '../../components/list-positions/list-positions.component';
-import { SettingsService } from '../../../settings/services/settings.service';
 import { TradingRequirementsAlertComponent } from '../../components/trading-requirements-alert/trading-requirements-alert.component';
 
 @Component({
@@ -19,7 +18,6 @@ import { TradingRequirementsAlertComponent } from '../../components/trading-requ
   styleUrl: './operate.component.scss'
 })
 export class OperateComponent {
-  readonly #settingsService = inject(SettingsService);
   readonly #positionService = inject(PositionService);
   readonly #orderBookService = inject(OrderBookService);
   readonly #toastrService = inject(ToastrService);
@@ -29,7 +27,6 @@ export class OperateComponent {
   currentPosition = this.#positionService.currentPosition;
   exitCost = this.#orderBookService.exitCost;
   positions = this.#positionService.lastPositions;
-  feePercentage = this.#settingsService.feePercentage;
   symbol = this.#route.snapshot.queryParams['symbol'];
 
   onNewOpenPosition(position: OpenPosition) {

@@ -31,6 +31,13 @@ export const appRoutes: Route[] = [
               import('./balance/pages/balance/balance.component').then(
                 (m) => m.BalanceComponent
               ),
+          },
+          {
+            path: 'settings',
+            loadComponent: () =>
+              import('./settings/pages/settings/settings.component').then(
+                (m) => m.SettingsComponent
+              ),
           }
         ],
       },
