@@ -60,6 +60,30 @@
             </div>
           </div>
 
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">EMA Fast:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="emaFastPeriod"
+                formControlName="emaFastPeriod" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">EMA Slow:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="emaSlowPeriod"
+                formControlName="emaSlowPeriod" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">RSI:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="rsiPeriod"
+                formControlName="rsiPeriod" />
+            </div>
+          </div>
+
           <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="saveSettings()">
             Save
           </button>

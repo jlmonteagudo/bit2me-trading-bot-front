@@ -33,6 +33,9 @@ export class SettingsComponent {
     trailingStopLossPercentage: [0, [Validators.required, ValidatorPercentage]],
     quoteCurrency: ['', [Validators.required]],
     quoteVolumeLimit: [0, [Validators.required, Validators.min(0), Validators.max(100_000_000)]],
+    emaFastPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
+    emaSlowPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
+    rsiPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
   });
 
   #settingsEffect = effect(() => {
@@ -43,6 +46,9 @@ export class SettingsComponent {
       trailingStopLossPercentage: this.settings()?.trailingStopLossPercentage,
       quoteCurrency: this.settings()?.quoteCurrency,
       quoteVolumeLimit: this.settings()?.quoteVolumeLimit,
+      emaFastPeriod: this.settings()?.emaFastPeriod,
+      emaSlowPeriod: this.settings()?.emaSlowPeriod,
+      rsiPeriod: this.settings()?.rsiPeriod,
     });
   });
 

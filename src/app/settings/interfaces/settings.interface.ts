@@ -5,4 +5,7 @@ export interface Settings {
   trailingStopLossPercentage: number;
   quoteCurrency: string;
   quoteVolumeLimit: number;
+  emaFastPeriod: number;
+  emaSlowPeriod: number;
+  rsiPeriod: number;
 }
