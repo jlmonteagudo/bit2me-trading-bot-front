@@ -1,11 +1,42 @@
-<div class="grid grid-cols-12 gap-x-6 mt-6">
-  <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
-    <div class="box">
-      <div class="box-header">
-        <div class="box-title">Settings</div>
+<form [formGroup]="settingsForm">
+
+  <div class="grid grid-cols-12 gap-x-6 mt-6">
+    <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
+
+      <!-- GENERAL SETTINGS -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">General Settings</div>
+        </div>
+        <div class="box-body">
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Quote
+              Currency:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="text" class="form-control form-control-sm" id="quoteCurrency"
+                formControlName="quoteCurrency" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Quote Volume
+              Limit:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="quoteVolumeLimit"
+                formControlName="quoteVolumeLimit" />
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="box-body">
-        <form [formGroup]="settingsForm">
+
+      <!-- TAKE PROFIT / STOP LOSS -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">Take Profit / Stop Loss</div>
+        </div>
+        <div class="box-body">
           <div class="grid grid-cols-12 mb-4">
             <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">% Initial
               Take Profit:</label>
@@ -41,27 +72,18 @@
                 formControlName="trailingStopLossPercentage" />
             </div>
           </div>
+        </div>
+      </div>
 
+      <!-- EMA AND RSI -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">EMA & RSI</div>
+        </div>
+        <div class="box-body">
           <div class="grid grid-cols-12 mb-4">
-            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Quote
-              Currency:</label>
-            <div class="sm:col-span-10 col-span-12">
-              <input type="text" class="form-control form-control-sm" id="quoteCurrency"
-                formControlName="quoteCurrency" />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-12 mb-4">
-            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Quote Volume
-              Limit:</label>
-            <div class="sm:col-span-10 col-span-12">
-              <input type="number" class="form-control form-control-sm" id="quoteVolumeLimit"
-                formControlName="quoteVolumeLimit" />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-12 mb-4">
-            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">EMA Fast:</label>
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">EMA
+              Fast:</label>
             <div class="sm:col-span-10 col-span-12">
               <input type="number" class="form-control form-control-sm" id="emaFastPeriod"
                 formControlName="emaFastPeriod" />
@@ -69,7 +91,8 @@
           </div>
 
           <div class="grid grid-cols-12 mb-4">
-            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">EMA Slow:</label>
+            <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">EMA
+              Slow:</label>
             <div class="sm:col-span-10 col-span-12">
               <input type="number" class="form-control form-control-sm" id="emaSlowPeriod"
                 formControlName="emaSlowPeriod" />
@@ -79,16 +102,125 @@
           <div class="grid grid-cols-12 mb-4">
             <label for="candleInterval" class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">RSI:</label>
             <div class="sm:col-span-10 col-span-12">
-              <input type="number" class="form-control form-control-sm" id="rsiPeriod"
-                formControlName="rsiPeriod" />
+              <input type="number" class="form-control form-control-sm" id="rsiPeriod" formControlName="rsiPeriod" />
             </div>
           </div>
 
-          <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="saveSettings()">
-            Save
-          </button>
-        </form>
+        </div>
       </div>
+
+      <!-- VALIDATE PENULTIMATE CANDLE VOLUME ABOVE AVERAGE -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">Validate Penultimate Candle Volume Above Average</div>
+        </div>
+        <div class="box-body">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="validatePenultimateCandleVolume"
+              formControlName="validatePenultimateCandleVolume">
+            <label class="form-check-label" for="validatePenultimateCandleVolume">
+              Enable
+            </label>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval"
+              class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Factor:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="validatePenultimateCandleVolumeFactor"
+                formControlName="validatePenultimateCandleVolumeFactor" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VALIDATE PENULTIMATE CANDLE IS POSITIVE -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">Validate Penultimate Candle Is Positive</div>
+        </div>
+        <div class="box-body">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="validatePenultimateCandleIsPositive"
+              formControlName="validatePenultimateCandleIsPositive">
+            <label class="form-check-label" for="validatePenultimateCandleIsPositive">
+              Enable
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- VALIDATE RESISTANCE -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">Validate Resistance</div>
+        </div>
+        <div class="box-body">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="validateResistance"
+              formControlName="validateResistance">
+            <label class="form-check-label" for="validateResistance">
+              Enable
+            </label>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval"
+              class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Factor:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="validateResistanceFactor"
+                formControlName="validateResistanceFactor" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VALIDATE SPREAD -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-title">Validate Spread</div>
+        </div>
+        <div class="box-body">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="validateSpread"
+              formControlName="validateSpread">
+            <label class="form-check-label" for="validateSpread">
+              Enable
+            </label>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval"
+              class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Limite Percentage:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="validateSpreadLimitPercentage"
+                formControlName="validateSpreadLimitPercentage" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 mb-4">
+            <label for="candleInterval"
+              class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Amount Quote:</label>
+            <div class="sm:col-span-10 col-span-12">
+              <input type="number" class="form-control form-control-sm" id="validateSpreadAmountQuote"
+                formControlName="validateSpreadAmountQuote" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+
+  <div class="mb-6">
+    <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="saveSettings()">
+      Save
+    </button>
+  </div>
+
+</form>

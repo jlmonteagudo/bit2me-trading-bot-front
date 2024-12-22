@@ -36,6 +36,14 @@ export class SettingsComponent {
     emaFastPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
     emaSlowPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
     rsiPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
+    validatePenultimateCandleVolume: false,
+    validatePenultimateCandleVolumeFactor: [0, [Validators.required, Validators.min(0), Validators.max(2)]],
+    validatePenultimateCandleIsPositive: false,
+    validateResistance: false,
+    validateResistanceFactor: [0, [Validators.required, Validators.min(0), Validators.max(2)]],
+    validateSpread: false,
+    validateSpreadLimitPercentage: [0, [Validators.required, Validators.min(0), Validators.max(100)]],
+    validateSpreadAmountQuote: [0, [Validators.required, Validators.min(0), Validators.max(1000_000)]],
   });
 
   #settingsEffect = effect(() => {
@@ -49,6 +57,14 @@ export class SettingsComponent {
       emaFastPeriod: this.settings()?.emaFastPeriod,
       emaSlowPeriod: this.settings()?.emaSlowPeriod,
       rsiPeriod: this.settings()?.rsiPeriod,
+      validatePenultimateCandleVolume: this.settings()?.validatePenultimateCandleVolume,
+      validatePenultimateCandleVolumeFactor: this.settings()?.validatePenultimateCandleVolumeFactor,
+      validatePenultimateCandleIsPositive: this.settings()?.validatePenultimateCandleIsPositive,
+      validateResistance: this.settings()?.validateResistance,
+      validateResistanceFactor: this.settings()?.validateResistanceFactor,
+      validateSpread: this.settings()?.validateSpread,
+      validateSpreadLimitPercentage: this.settings()?.validateSpreadLimitPercentage,
+      validateSpreadAmountQuote: this.settings()?.validateSpreadAmountQuote,
     });
   });
 

@@ -8,4 +8,12 @@ export interface Settings {
   emaFastPeriod: number;
   emaSlowPeriod: number;
   rsiPeriod: number;
+  validatePenultimateCandleVolume: boolean;
+  validatePenultimateCandleVolumeFactor: number;
+  validatePenultimateCandleIsPositive: boolean;
+  validateResistance: boolean;
+  validateResistanceFactor: number;
+  validateSpread: boolean;
+  validateSpreadLimitPercentage: number;
+  validateSpreadAmountQuote: number;
 }
