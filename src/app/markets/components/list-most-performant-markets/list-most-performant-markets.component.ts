@@ -1,9 +1,9 @@
 import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Ticker } from '../../interfaces/ticker.interface';
 import { Router } from '@angular/router';
 import { DeviceTypeService } from '../../../shared/services/device-type.service';
 import { environment } from '../../../../environments/environment';
+import { MarketScore } from '../../interfaces/market-score.interface';
 
 @Component({
   selector: 'app-list-most-performant-markets',
@@ -14,7 +14,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class ListMostPerformantMarketsComponent {
   router = inject(Router);
-  markets = input.required<Ticker[]>();
+  markets = input.required<MarketScore[]>();
 
   openChart(symbol: string) {
     const urlSymbol = symbol.replace('/', '-');

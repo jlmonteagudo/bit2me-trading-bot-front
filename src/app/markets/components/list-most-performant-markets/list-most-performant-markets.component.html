@@ -12,20 +12,20 @@
           <div class="flex items-center gap-2">
 
             <p class="mb-2 text-[#8c9097] dark:text-white/50">
-              <span>{{ market.symbol }}</span>
+              <span>{{ market.ticker.symbol }}</span>
             </p>
             <p class="mb-2 text-[#8c9097] dark:text-white/50">
-              <span class="font-semibold text-defaulttextcolor dark:text-defaulttextcolor/70">{{ market.percentage |
-                number: '1.2-2' }}%</span>
+              <span class="font-semibold text-defaulttextcolor dark:text-defaulttextcolor/70">{{ market.score |
+                number: '1.2-2' }}</span>
             </p>
 
           </div>
 
           <div class="flex items-center text-end gap-2">
             <button type="button" class="ti-btn ti-btn-primary-full !py-1 !px-2 ti-btn-wave"
-              (click)="openChart(market.symbol)">Chart</button>
+              (click)="openChart(market.ticker.symbol)">Chart</button>
             <button type="button" class="ti-btn ti-btn-primary-full !py-1 !px-2 ti-btn-wave"
-              (click)="openOperate(market.symbol)">Operate</button>
+              (click)="openOperate(market.ticker.symbol)">Operate</button>
           </div>
 
         </div>
