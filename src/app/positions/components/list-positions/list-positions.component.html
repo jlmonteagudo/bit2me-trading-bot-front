@@ -41,6 +41,13 @@
             class="font-semibold text-defaulttextcolor dark:text-defaulttextcolor/70">Exit Cost : </span>{{
           position.exitCost | number }}</p>
 
+        @if(position.lowerProfitPercentage) {
+        <p class="mb-2 text-[#8c9097] dark:text-white/50">
+          <span class="font-semibold text-defaulttextcolor dark:text-defaulttextcolor/70">% Lower Profit : </span>
+          {{ position.lowerProfitPercentage | number }}%
+        </p>
+        }
+
         <p class="mb-2 text-[#8c9097] dark:text-white/50"><span
             class="font-semibold text-defaulttextcolor dark:text-defaulttextcolor/70">Profit : </span>
           <span class="mb-0 font-semibold"

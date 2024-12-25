@@ -16,4 +16,5 @@ export interface Position {
   exitPrice: number;
   exitCost: number;
   exitAt: number;
+  lowerProfitPercentage?: number;
 }
