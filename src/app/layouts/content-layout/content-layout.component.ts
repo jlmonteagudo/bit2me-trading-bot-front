@@ -1,3 +1,4 @@
+import { LogComponent } from './../../shared/components/log-component/log.component';
 import { Component, ElementRef, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
@@ -6,7 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TabToTopComponent } from './components/tab-to-top/tab-to-top.component';
 import { Menu, NavService } from '../services/nav.service';
 import { ServerTimeService } from '../../shared/services/server-time.service';
-import { DatePipe } from '@angular/common';
+import { ServerTimeComponent } from '../../shared/components/server-time/server-time.component';
 
 @Component({
   selector: 'app-content-layout',
@@ -17,7 +18,8 @@ import { DatePipe } from '@angular/common';
     SidebarComponent,
     FooterComponent,
     TabToTopComponent,
-    DatePipe
+    ServerTimeComponent,
+    LogComponent
   ],
   templateUrl: './content-layout.component.html',
   styleUrl: './content-layout.component.scss',

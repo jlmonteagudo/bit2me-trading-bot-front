@@ -3,11 +3,8 @@
   <app-sidebar appHoverEffectSidebar></app-sidebar>
   <div class="content">
     <div class="main-content" (click)="togglesidemenuBody()">
-
-      <div class="mt-2">
-        Server Time: {{ serverTime() | date: 'dd/MM/yyyy HH:mm:ss' }}
-      </div>
-
+      <app-server-time />
+      <app-log />
       <router-outlet></router-outlet>
     </div>
   </div>
