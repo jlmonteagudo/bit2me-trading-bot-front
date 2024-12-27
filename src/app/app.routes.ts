@@ -38,6 +38,13 @@ export const appRoutes: Route[] = [
               import('./settings/pages/settings/settings.component').then(
                 (m) => m.SettingsComponent
               ),
+          },
+          {
+            path: 'profit-simulation',
+            loadComponent: () =>
+              import('./profit-simulation/pages/profit-simulation/profit-simulation.component').then(
+                (m) => m.ProfitSimulationComponent
+              ),
           }
         ],
       },

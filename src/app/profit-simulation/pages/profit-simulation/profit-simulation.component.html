@@ -1,0 +1,103 @@
+<form [formGroup]="profitSimulationForm">
+
+    <div class="grid grid-cols-12 gap-x-6 mt-6">
+        <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-title">Profit Simulation</div>
+                </div>
+                <div class="box-body">
+
+                    <div class="grid grid-cols-12 mb-4">
+                        <label for="initialCapital"
+                            class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Initial capital:</label>
+                        <div class="sm:col-span-10 col-span-12">
+                            <input type="number" class="form-control form-control-sm" id="initialCapital"
+                                formControlName="initialCapital" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-12 mb-4">
+                        <label for="days"
+                            class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Days:</label>
+                        <div class="sm:col-span-10 col-span-12">
+                            <input type="number" class="form-control form-control-sm" id="days"
+                                formControlName="days" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-12 mb-4">
+                        <label for="operationsPerDay"
+                            class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">Operations per
+                            day:</label>
+                        <div class="sm:col-span-10 col-span-12">
+                            <input type="number" class="form-control form-control-sm" id="operationsPerDay"
+                                formControlName="operationsPerDay" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-12 mb-4">
+                        <label for="profitPercentagePerOperation"
+                            class="sm:col-span-2 col-span-12 col-form-label col-form-label-sm">% Profit per
+                            operation:</label>
+                        <div class="sm:col-span-10 col-span-12">
+                            <input type="number" class="form-control form-control-sm" id="profitPercentagePerOperation"
+                                formControlName="profitPercentagePerOperation" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="simulate()">
+            Simulate
+        </button>
+    </div>
+
+    @if(profit) {
+    <div class="grid grid-cols-12 gap-x-6 mt-6">
+        <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
+            <div class="box">
+                <div class="box-header md:justify-between flex-wrap">
+                    <div class="box-title">Profit</div>
+                </div>
+                <div class="box-body !p-0">
+
+                    <ul class="border-0">
+                        <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+                            <div class="flex w-full justify-between items-center">
+                                <span class="tx-14 mb-0 font-normal text-dark">
+                                    Simple Interest
+                                </span>
+                                <div>
+                                    <span class="tx-14 mb-0 font-semibold text-dark">
+                                        {{ profit.simpleInterest | number: '1.2-2' }}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="py-[0.8rem] px-[1.25rem] border-b dark:border-defaultborder/10">
+                            <div class="flex w-full justify-between items-center">
+                                <span class="tx-14 mb-0 font-normal text-dark">
+                                    Compound Interest
+                                </span>
+                                <div>
+                                    <span class="tx-14 mb-0 font-semibold text-dark">
+                                        {{ profit.compoundInterest | number: '1.2-2' }}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+</form>
