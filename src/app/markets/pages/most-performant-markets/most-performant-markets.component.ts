@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarketService } from '../../services/market.service';
 import { ListMostPerformantMarketsComponent } from '../../components/list-most-performant-markets/list-most-performant-markets.component';
+import { NotifyEntrySignalComponent } from './../../../notifications/components/notify-entry-signal/notify-entry-signal.component';
 
 @Component({
   selector: 'app-most-performant-markets',
   standalone: true,
-  imports: [CommonModule, ListMostPerformantMarketsComponent],
+  imports: [CommonModule, ListMostPerformantMarketsComponent, NotifyEntrySignalComponent],
   templateUrl: './most-performant-markets.component.html',
   styleUrl: './most-performant-markets.component.scss'
 })
