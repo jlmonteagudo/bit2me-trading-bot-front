@@ -36,7 +36,7 @@ export class SettingsComponent {
     emaFastPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
     emaSlowPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
     rsiPeriod: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
-    timeframeInterval: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
+    timeframeInterval: ['', [Validators.required]],
     numberOfCandles: [0, [Validators.required, Validators.min(0), Validators.max(1000)]],
     validatePenultimateCandleVolume: false,
     validatePenultimateCandleVolumeFactor: [0, [Validators.required, Validators.min(0), Validators.max(2)]],

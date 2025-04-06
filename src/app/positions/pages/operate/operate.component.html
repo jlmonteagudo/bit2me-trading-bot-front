@@ -1,13 +1,15 @@
 <div class="grid grid-cols-12 gap-x-6 mt-2">
   <div class="xxl:col-span-4 xl:col-span-4 col-span-12">
     <div class="mb-4"><app-trading-requirements-alert /></div>
-    <app-open-position [symbol]="symbol" (newOpenPosition)="onNewOpenPosition($event)" *ngIf="!currentPosition()" />
 
     @if(currentPosition()) {
     <app-current-position [currentPosition]="currentPosition()!" [exitCost]="exitCost()"
       (closePosition)="onClosePosition($event)" />
     }
+    @else {
+    <app-open-position [symbol]="symbol" (newOpenPosition)="onNewOpenPosition($event)" />
+    }
 
-    <app-list-positions [positions]="positions()" />
+    <app-price-chart [symbol]="symbol" />
   </div>
 </div>

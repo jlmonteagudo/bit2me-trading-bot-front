@@ -1,0 +1,45 @@
+<div class="grid grid-cols-12 gap-x-6 mt-6">
+  <div class="col-span-12">
+    <div class="box">
+      <div class="box-header md:justify-between flex-wrap">
+        <div class="box-title">Price Chart - {{ symbol() }}</div>
+      </div>
+      <div class="box-body px-2 py-4">
+
+        <div class="flex gap-8">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timeFrame" checked (change)="onTimeFrameChange('1m')">
+            <label class="form-check-label">1m</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timeFrame" (change)="onTimeFrameChange('5m')">
+            <label class="form-check-label">5m</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timeFrame" (change)="onTimeFrameChange('15m')">
+            <label class="form-check-label">15m</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timeFrame" (change)="onTimeFrameChange('30m')">
+            <label class="form-check-label">30m</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timeFrame" (change)="onTimeFrameChange('1h')">
+            <label class="form-check-label">1h</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timeFrame" (change)="onTimeFrameChange('1d')">
+            <label class="form-check-label">1d</label>
+          </div>
+        </div>
+
+        <div #chartContainer class="chart-container mt-2"></div>
+      </div>
+    </div>
+  </div>
+</div>

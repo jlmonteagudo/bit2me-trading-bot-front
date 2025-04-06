@@ -14,8 +14,9 @@ export const environment = {
     `https://${resource}-iivwz62j7q-uc.a.run.app`,
   defaultQuoteCurrency: 'USDT',
   urls: {
-    api: '',
-    websocket: 'wss://orca-app-jkafl.ondigitalocean.app',
+    api: 'https://bit2me-trading.duckdns.org',
+    websocket: 'wss://bit2me-trading.duckdns.org',
+    // api: 'http://localhost:8080',
     // websocket: 'ws://localhost:8080',
     bit2me: 'https://pro.bit2me.com/exchange',
     bit2meMobile: 'https://pro-mobile.bit2me.com/charts',

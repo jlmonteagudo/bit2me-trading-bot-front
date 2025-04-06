@@ -1,0 +1,17 @@
+<div class="box mt-4">
+    <div class="box-header">
+        <div class="box-title">Select Market</div>
+    </div>
+    <div class="box-body">
+        <div class="input-group p-4">
+            <input type="text" class="form-control" placeholder="Symbol" [formControl]="symbolControl" />
+            <button class="ti-btn ti-btn-primary-full !mb-0" type="submit" (click)="selectSymbol()">
+                Select
+            </button>
+        </div>
+    </div>
+</div>
+
+@if(symbol) {
+<app-price-chart [symbol]="symbol" />
+}

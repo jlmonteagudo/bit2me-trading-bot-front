@@ -8,7 +8,7 @@ export interface Settings {
   emaFastPeriod: number;
   emaSlowPeriod: number;
   rsiPeriod: number;
-  timeframeInterval: number;
+  timeframeInterval: string;
   numberOfCandles: number;
   validatePenultimateCandleVolume: boolean;
   validatePenultimateCandleVolumeFactor: number;

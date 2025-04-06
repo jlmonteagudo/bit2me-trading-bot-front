@@ -67,13 +67,13 @@ export class HeaderComponent {
       const darkbtn = document.querySelector(
         '#switcher-dark-theme'
       ) as HTMLInputElement;
-      darkbtn.checked = true;
+      if (darkbtn) darkbtn.checked = true;
       this.renderer.setAttribute(htmlElement, 'data-menu-style', 'dark');
     } else {
       const lightbtn = document.querySelector(
         '#switcher-light-theme'
       ) as HTMLInputElement;
-      lightbtn.checked = true;
+      if (lightbtn) lightbtn.checked = true;
       this.renderer.setAttribute(htmlElement, 'data-menu-style', 'light');
     }
   }
@@ -136,10 +136,21 @@ export class HeaderComponent {
   public items!: Menu[];
   public text!: string;
   public SearchResultEmpty: boolean = false;
+
   ngOnInit() {
     this.navServices.items.subscribe((menuItems) => {
       this.items = menuItems;
     });
+
+    this.setupTheme();
+  }
+
+  setupTheme() {
+    const themeMode = localStorage.getItem('ynex-theme-mode') || 'light';
+    const headerMode = localStorage.getItem('ynex-header-mode') || 'light';
+    const menuMode = localStorage.getItem('ynex-menu-mode') || 'light';
+
+    this.themeChange(themeMode, headerMode, menuMode);
   }
 
   Search(searchText: string) {

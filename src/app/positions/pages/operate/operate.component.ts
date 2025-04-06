@@ -7,13 +7,13 @@ import { PositionService } from '../../services/position.service';
 import { OrderBookService } from '../../../order-book/services/order-book.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
-import { ListPositionsComponent } from '../../components/list-positions/list-positions.component';
 import { TradingRequirementsAlertComponent } from '../../components/trading-requirements-alert/trading-requirements-alert.component';
+import { PriceChartComponent } from './../../../chart/components/price-chart/price-chart.component';
 
 @Component({
   selector: 'app-operate',
   standalone: true,
-  imports: [CommonModule, OpenPositionComponent, CurrentPositionComponent, ListPositionsComponent, TradingRequirementsAlertComponent],
+  imports: [CommonModule, OpenPositionComponent, CurrentPositionComponent, TradingRequirementsAlertComponent, PriceChartComponent],
   templateUrl: './operate.component.html',
   styleUrl: './operate.component.scss'
 })

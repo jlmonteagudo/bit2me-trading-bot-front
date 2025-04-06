@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.chart-container {
+  max-width: 700px;
+  height: 400px;
+}

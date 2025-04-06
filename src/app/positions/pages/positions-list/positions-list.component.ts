@@ -1,17 +1,21 @@
-import { Component, computed, effect, input, model, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { PositionService } from '../../services/position.service';
 import { CommonModule } from '@angular/common';
-import { Position } from '../../interfaces/position.interface';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-list-positions',
+  selector: 'app-positions-list',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './list-positions.component.html',
-  styleUrl: './list-positions.component.scss'
+  templateUrl: './positions-list.component.html',
+  styleUrl: './positions-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListPositionsComponent {
-  positions = input<Position[]>();
+export class PositionsListComponent {
+  readonly #positionService = inject(PositionService);
+
+  positions = this.#positionService.lastPositions;
+
   normalizedQuoteAmount = signal(0);
   quoteAmount = 0;
 

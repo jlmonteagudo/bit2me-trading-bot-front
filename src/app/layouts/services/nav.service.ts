@@ -101,6 +101,18 @@ export class NavService implements OnDestroy {
       type: 'link',
     },
     {
+      icon: 'line-chart',
+      path: 'display-chart',
+      title: 'Chart',
+      type: 'link',
+    },
+    {
+      icon: 'list-ol',
+      path: 'positions-list',
+      title: 'Positions',
+      type: 'link',
+    },
+    {
       icon: 'wallet',
       path: 'balance',
       title: 'Balance',

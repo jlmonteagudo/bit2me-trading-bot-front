@@ -1,9 +1,8 @@
 import { Component, computed, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Position } from '../../interfaces/position.interface';
 import { SymbolCurrencyPipe } from '../../../shared/pipes/symbol-currency.pipe';
-import { environment } from '../../../../environments/environment';
-import { DeviceTypeService } from '../../../shared/services/device-type.service';
 
 @Component({
   selector: 'app-current-position',
@@ -13,6 +12,8 @@ import { DeviceTypeService } from '../../../shared/services/device-type.service'
   styleUrl: './current-position.component.scss'
 })
 export class CurrentPositionComponent {
+  router = inject(Router);
+
   currentPosition = input.required<Position>();
   exitCost = input.required<number>();
   closePosition = output<string>();
@@ -36,10 +37,4 @@ export class CurrentPositionComponent {
     if (!this.currentPosition()) return 0;
     return this.currentPosition()!.takeProfitCost - this.exitCost();
   });
-
-  openChart(symbol: string) {
-    const urlSymbol = symbol.replace('/', '-');
-    const baseUrl = DeviceTypeService.getDeviceType() === 'desktop' ? environment.urls.bit2me : environment.urls.bit2meMobile;
-    window.open(`${baseUrl}/${urlSymbol}`, '_blank');
-  }
 }

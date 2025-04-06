@@ -19,6 +19,13 @@ export const appRoutes: Route[] = [
               ),
           },
           {
+            path: 'positions-list',
+            loadComponent: () =>
+              import('./positions/pages/positions-list/positions-list.component').then(
+                (m) => m.PositionsListComponent
+              ),
+          },
+          {
             path: 'performant-markets',
             loadComponent: () =>
               import('./markets/pages/most-performant-markets/most-performant-markets.component').then(
@@ -44,6 +51,13 @@ export const appRoutes: Route[] = [
             loadComponent: () =>
               import('./profit-simulation/pages/profit-simulation/profit-simulation.component').then(
                 (m) => m.ProfitSimulationComponent
+              ),
+          },
+          {
+            path: 'display-chart',
+            loadComponent: () =>
+              import('./chart/pages/display-chart/display-chart.component').then(
+                (m) => m.DisplayChartComponent
               ),
           }
         ],
